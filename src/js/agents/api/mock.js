@@ -1,22 +1,18 @@
-module.exports = [{
+var agents = [{
   id : 1,
   name : 'Trent Lamebars',
   company : 'Bogus',
-  meta : {
-      notes : 'Time waster that phones to fish for leads.'
-  }
+  type : 'agency',
 }, {
   id : 2,
   name : 'Andrew Carter',
   company : 'Wishful Recruitment',
-  meta : {
-      notes : 'All talk and no trousers.'
-  }
+  type : 'independent',
 }, {
   id : 3,
-  name : 'Craig Mullen',
+  name : 'Meg Sullen',
   company : 'Olivia Dunnard',
-  meta : {
-      notes : 'Got me a job.'
-  }
+  type : 'agency',
 }];
+
+module.exports = agents;

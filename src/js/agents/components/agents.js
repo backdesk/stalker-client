@@ -7,27 +7,18 @@ var Actions = require('../actions');
 
 
 var AgentItem = React.createClass({
-  handleClick : function (e) {
-    e.preventDefault();
-  },
-
   render : function () {
     var p = this.props.item;
 
     return (
       <li>        
-        <h4><a href="#" onClick={this.handleClick}>{p.name}</a></h4>
-        <p>{p.company}</p>
+        <h4>{p.name} @ {p.company}</h4>
       </li>
     );
   }
 });
 
-var AgentList = React.createClass({
-  componentDidMount : function () {
-    Actions.load();
-  },
-
+var AgentList = React.createClass({  
   render : function () {
     var p, items = [];
 
@@ -46,6 +37,10 @@ var AgentList = React.createClass({
 
 module.exports = React.createClass({ 
   mixins: [Reflux.connect(AgentsStore)],
+
+  componentDidMount : function () {
+    Actions.load();
+  },
 
   render : function () {
     return (
