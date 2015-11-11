@@ -12,7 +12,7 @@ var App = React.createClass({
     	<div>
 	    	<h1>Welcome</h1>
 	    	<Dashboard>
-	    		<DashboardPanel title="Active Agents"><Agents /></DashboardPanel>
+	     		<DashboardPanel title="Active Agents"><Agents /></DashboardPanel>
 	    	</Dashboard>
 	    </div>
     );
