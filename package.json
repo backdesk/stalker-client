@@ -16,7 +16,7 @@
     "object-assign": "^4.0.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
-    "react-router": "^1.0.0-rc4",
+    "react-router": "^1.0.0",
     "reflux": "^0.3.0",
     "vinyl-source-stream": "^1.1.0"
   },

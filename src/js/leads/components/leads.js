@@ -1,7 +1,6 @@
-var React = require('react');
-var Reflux = require('reflux');
-var m = require('moment');
-
+var React = require('react'),
+    Reflux = require('reflux'),
+    Link = require('react-router').Link;
 
 var LeadsStore = require('../stores/leads');
 var Actions = require('../actions');
@@ -11,11 +10,8 @@ var LeadCard = React.createClass({
     var p = this.props.item;
 
     return (
-      <div>        
-        <h4>{p.details}</h4>
-        <p>
-          <strong>Status: </strong>{p.status} - {m(p.lastUpdate).format('ddd Do MMM YYYY')} ({m(p.lastUpdate).fromNow()}) 
-        </p>
+      <div className="lead-card">
+        <Link to={`/leads/${p._id}`}>{p.details}</Link>
       </div>
     );
   }
@@ -29,7 +25,7 @@ var LeadList = React.createClass({
       p = this.props.items[i];
       items.push(<LeadCard key={i} item={p} />);
     }
-    
+
     return (
       <div>
         {items}
@@ -40,12 +36,13 @@ var LeadList = React.createClass({
 
 module.exports = React.createClass({
   mixins: [Reflux.connect(LeadsStore)],
-  
+
   componentDidMount : function () {
     Actions.load(this.props.filter);
   },
 
   render : function () {
+    console.log(this.state);
     return (
       <LeadList items={this.state.leads} />
     );

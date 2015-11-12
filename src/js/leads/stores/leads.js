@@ -1,5 +1,4 @@
 var Reflux = require('reflux');
-var moment = require('moment');
 
 module.exports = Reflux.createStore({
   listenables : require('../actions'),
@@ -9,6 +8,6 @@ module.exports = Reflux.createStore({
   },
 
   onLoadCompleted : function (leads) {
-    this.trigger({ leads : leads });
+  	this.trigger({ leads : leads });
   }
 });

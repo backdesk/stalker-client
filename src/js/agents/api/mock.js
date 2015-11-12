@@ -2,7 +2,7 @@ var agents = [{
   id : 1,
   name : 'Trent Lamebars',
   company : 'Bogus',
-  type : 'agency',
+  type : 'agency'
 }, {
   id : 2,
   name : 'Andrew Carter',

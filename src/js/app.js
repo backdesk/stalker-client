@@ -1,23 +1,32 @@
-var React = require('react');
-var ReactDom = require('react-dom');
+var React = require('react'),
+    ReactDom = require('react-dom'),
+    Router = require('react-router').Router,
+    Route = require('react-router').Route,
+    IndexRoute = require('react-router').IndexRoute,
+    Link = require('react-router').Link;
 
-var Agents = require('./agents/components/agents');
-var Leads = require('./leads/components/leads');
-
-var Dashboard = require('./dashboard/components/dashboard');
-var DashboardPanel = require('./dashboard/components/panel');
+var Header = require('./shared/components/header'),
+    Agents = require('./agents/components/agents'),
+    Leads = require('./leads/components/leads'),
+    Lead = require('./leads/components/lead'),
+    Dashboard = require('./dashboard/components/dashboard');
 
 var App = React.createClass({
   render: function() {
     return (
-      <Dashboard>
-        <DashboardPanel title="Agents"><Agents /></DashboardPanel>
-        <DashboardPanel title="Current Leads">
-          <Leads filter="status:active" />
-        </DashboardPanel>
-      </Dashboard>
+      <div id="content">
+        <Header title="Persistent Title" />
+        {this.props.children}
+      </div>
     );
   }
 });
 
-ReactDom.render(<App />, document.getElementById('main'));
+ReactDom.render((
+  <Router>
+    <Route path="/" component={App}>
+      <IndexRoute component={Dashboard}/>
+      <Route path="leads/:id" component={Lead} />
+    </Route>
+  </Router>
+), document.getElementById('main'));

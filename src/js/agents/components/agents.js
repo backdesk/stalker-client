@@ -11,14 +11,15 @@ var AgentItem = React.createClass({
     var p = this.props.item;
 
     return (
-      <li>        
-        <h4>{p.name} @ {p.company}</h4>
+      <li>
+        <p>{p.name} @ {p.company}</p>
+        <small>Rank not calculated</small>
       </li>
     );
   }
 });
 
-var AgentList = React.createClass({  
+var AgentList = React.createClass({
   render : function () {
     var p, items = [];
 
@@ -26,7 +27,7 @@ var AgentList = React.createClass({
       p = this.props.items[i];
       items.push(<AgentItem key={i} item={p} />);
     }
-    
+
     return (
       <ul>
         {items}
@@ -35,7 +36,7 @@ var AgentList = React.createClass({
   }
 });
 
-module.exports = React.createClass({ 
+module.exports = React.createClass({
   mixins: [Reflux.connect(AgentsStore)],
 
   componentDidMount : function () {
