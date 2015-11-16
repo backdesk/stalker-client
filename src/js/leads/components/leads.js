@@ -1,17 +1,27 @@
 var React = require('react'),
     Reflux = require('reflux'),
-    Link = require('react-router').Link;
+    Router = require('react-router');
 
-var LeadsStore = require('../stores/leads');
-var Actions = require('../actions');
+var leadsStore = require('../stores/leads');
+var actions = require('../actions');
 
 var LeadCard = React.createClass({
+  mixins : [Router.History],
+
+  handleClick : function (e) {
+    var lead = this.props.lead;
+
+    e.preventDefault();
+
+    this.history.pushState(null, '/leads/' + lead._id);
+  },
+
   render : function () {
-    var p = this.props.item;
+    var lead = this.props.lead;
 
     return (
       <div className="lead-card">
-        <Link to={`/leads/${p._id}`}>{p.details}</Link>
+        <a href="#" onClick={this.handleClick}>{lead.details}</a>
       </div>
     );
   }
@@ -19,32 +29,28 @@ var LeadCard = React.createClass({
 
 var LeadList = React.createClass({
   render : function () {
-    var p, items = [];
-
-    for (var i in this.props.items) {
-      p = this.props.items[i];
-      items.push(<LeadCard key={i} item={p} />);
-    }
+    var leadNodes =  this.props.leads.map(function (lead) {
+      return <LeadCard key={lead._id} lead={lead} />
+    });
 
     return (
       <div>
-        {items}
+        {leadNodes}
       </div>
     );
   }
 });
 
 module.exports = React.createClass({
-  mixins: [Reflux.connect(LeadsStore)],
+  mixins : [Reflux.connect(leadsStore)],
 
   componentDidMount : function () {
-    Actions.load(this.props.filter);
+    actions.load(this.props.filter);
   },
 
   render : function () {
-    console.log(this.state);
     return (
-      <LeadList items={this.state.leads} />
+      <LeadList leads={this.state.leads} />
     );
   }
 });
