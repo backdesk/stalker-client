@@ -29,11 +29,29 @@ module.exports = {
         data = mock.filter(function (lead) {
           return lead.status === filter[1];
         });
+
+        data = data.map(function (lead) {
+          var obj = {}, fields = ['_id', 'created', 'lastUpdate', 'details', 'status'];
+
+          fields.forEach(function (f) {
+            obj[f] = lead[f];
+          });
+
+          return obj;
+        });
       }
     }
 
     return new Promise(function(resolve, reject) {
       resolve(data);
     });
+  },
+
+  create : function () {
+
+  },
+
+  update : function () {
+
   }
 };

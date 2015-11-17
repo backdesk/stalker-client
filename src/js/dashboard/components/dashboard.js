@@ -8,7 +8,7 @@ var Panel = React.createClass({
   render : function () {
     return (
       <section className="panel">
-        <h2>{this.props.title}</h2>
+        <h3>{this.props.title}</h3>
         {this.props.children}
       </section>
     );

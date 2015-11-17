@@ -2,8 +2,7 @@ var React = require('react'),
     ReactDom = require('react-dom'),
     Router = require('react-router').Router,
     Route = require('react-router').Route,
-    IndexRoute = require('react-router').IndexRoute,
-    Link = require('react-router').Link;
+    IndexRoute = require('react-router').IndexRoute;
 
 var Header = require('./shared/components/header'),
     Agents = require('./agents/components/agents'),
@@ -15,7 +14,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div id="content">
-        <Header title="Persistent Title" />
+        <Header />
         {this.props.children}
       </div>
     );

@@ -4,7 +4,8 @@ var Proxy = require('./api/proxy');
 
 var Actions = Reflux.createActions({
   'load' : { children : ['completed', 'failed'] },
-  'loadLead' : { children : ['completed', 'failed'] }
+  'loadLead' : { children : ['completed', 'failed'] },
+  'changeStatus' : {}
 });
 
 Actions.load.listen(function(filter) {

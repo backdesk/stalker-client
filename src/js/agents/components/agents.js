@@ -11,9 +11,9 @@ var AgentItem = React.createClass({
     var p = this.props.item;
 
     return (
-      <li>
+      <li class="agent-item">
         <p>{p.name} @ {p.company}</p>
-        <small>Rank not calculated</small>
+        <p className="rank">Rank not calculated</p>
       </li>
     );
   }
