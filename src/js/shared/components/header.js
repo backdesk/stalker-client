@@ -3,8 +3,8 @@ var React = require('react');
 module.exports = React.createClass({
   render : function () {
     return (
-      <header id="head">
-      	<h1>{this.props.title}</h1>
+      <header className="nav pure-menu-fixed pure-menu-horizontal">
+		<a className="pure-menu-heading" href="">Meh to deh werld</a>
       </header>
     );
   }

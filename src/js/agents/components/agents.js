@@ -1,5 +1,6 @@
 var React = require('react');
 var Reflux = require('reflux');
+var moment = require('moment');
 
 
 var AgentsStore = require('../stores/agents');
@@ -8,12 +9,11 @@ var Actions = require('../actions');
 
 var AgentItem = React.createClass({
   render : function () {
-    var p = this.props.item;
+    var p = this.props.agent;
 
     return (
-      <li class="agent-item">
-        <p>{p.name} @ {p.company}</p>
-        <p className="rank">Rank not calculated</p>
+      <li className="agent-item">
+        <p>{p.name} @ {p.company} - {moment(p.lastContact).fromNow()}</p>
       </li>
     );
   }
@@ -21,16 +21,13 @@ var AgentItem = React.createClass({
 
 var AgentList = React.createClass({
   render : function () {
-    var p, items = [];
-
-    for (var i in this.props.items) {
-      p = this.props.items[i];
-      items.push(<AgentItem key={i} item={p} />);
-    }
+    var agentNodes =  this.props.agents.map(function (agent) {
+      return <AgentItem key={agent._id} agent={agent} />
+    });
 
     return (
       <ul>
-        {items}
+        {agentNodes}
       </ul>
     );
   }
@@ -40,12 +37,12 @@ module.exports = React.createClass({
   mixins: [Reflux.connect(AgentsStore)],
 
   componentDidMount : function () {
-    Actions.load();
+    Actions.load(this.props.mode, this.props.filter);
   },
 
   render : function () {
     return (
-      <AgentList items={this.state.agents} />
+      <AgentList agents={this.state.agents} />
     );
   }
 });

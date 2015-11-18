@@ -10,7 +10,7 @@ module.exports = React.createClass({
      		<div className="content pure-u-1 pure-u-md-3-4">
      			{this.props.children}
      		</div>
-     	</div>
+        </div>
     );
   }
 });

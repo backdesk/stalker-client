@@ -8,8 +8,6 @@ module.exports = Reflux.createStore({
   },
 
   getInitialState : function () {
-    console.log('here');
-
     return {
       lead : {
         _id : null,

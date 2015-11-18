@@ -1,5 +1,40 @@
 .lead-card {
-	h2 {
-		margin : 0;
+	margin-bottom: 1rem;
+
+	.info {
+		border: 1px solid #ccc;
+		border-top: none;
+		padding: 10px;
+		position: relative;
 	}
+
+	.last-update {
+		float: right;
+	}
+}
+
+.lead-card .dismiss {
+    background-color: #000;
+    color: #fff;
+    font-size: 11px;
+    position: absolute;
+    right: 10px;
+    top: 7.5px;
+    letter-spacing: 1px;
+}
+
+.lead-card .header {
+	border: 1px solid #ccc;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+
+    padding: 10px;
+
+    & > a {
+    	text-decoration: none;
+
+    	&:hover {
+    		text-decoration: underline;
+    	}
+    }
 }

@@ -20,10 +20,13 @@ module.exports = React.createClass({
     var agents = <Agents />;
 
     return (
-      <Layout menu={agents}>
+      <Layout>
         <div className="dashboard">
-          <Panel title="Active Leads">
+          <Panel title="Fresh Donuts">
             <Leads filter="status:pending" />
+          </Panel>
+          <Panel title="Runners and Gunners">
+            <Agents mode="chase" />
           </Panel>
         </div>
       </Layout>

@@ -1,11 +1,14 @@
-@import 'reset.scss';
+@import 'base.scss';
 @import 'leads.scss';
 @import 'agents.scss';
 @import 'dashboard.scss';
+@import 'nav.scss';
+
+
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 35px;
     bottom: 0;
     width: 25%;
     border-right: 1px solid #ccc;
@@ -15,4 +18,5 @@
 .content {
 	padding: 2em 3em 0;
 	margin-left: 25%;
+	margin-top: $nav-height;
 }
