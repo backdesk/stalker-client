@@ -25,19 +25,19 @@ Actions.dismiss.listen(function(id) {
 });
 
 Actions.update.listen(function(data) {
-	var errors = [];
+  var errors = [];
 
-	// TODO: Move to object validator.
-	if(data.details.trim().length === 0){
-		errors.push({ message : 'Details cannot be empty.' });
-	}
+  // TODO: Move to object validator.
+  if(data.details.trim().length === 0){
+    errors.push({ message : 'Details cannot be empty.' });
+  }
 
-	if(errors.length) {
-		this.failed(data, errors);
-	} else {
-		Proxy.update(data)
-			.then(this.success, this.failed);
-	}
+  if(errors.length) {
+    this.failed(data, errors);
+  } else {
+    Proxy.update(data)
+      .then(this.success, this.failed);
+  }
 });
 
 
