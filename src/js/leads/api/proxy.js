@@ -54,7 +54,9 @@ module.exports = {
   },
 
   create : function () {
-
+    return new Promise(function(resolve, reject) {
+      resolve(lead);
+    });
   },
 
   update : function (lead) {

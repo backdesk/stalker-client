@@ -27,6 +27,7 @@ Actions.dismiss.listen(function(id) {
 Actions.update.listen(function(data) {
 	var errors = [];
 
+	// TODO: Move to object validator.
 	if(data.details.trim().length === 0){
 		errors.push({ message : 'Details cannot be empty.' });
 	}

@@ -67,7 +67,11 @@ module.exports = React.createClass({
   mixins: [Reflux.connect(leadStore)],
 
   handleSubmit : function (data) {
-    actions.update(data);
+    if(this.props.routeParams.id) {
+      actions.update(data);
+    } else {
+      actions.create(data);
+    }
   },
 
   componentDidMount : function () {
