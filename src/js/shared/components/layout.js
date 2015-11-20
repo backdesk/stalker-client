@@ -8,7 +8,7 @@ module.exports = React.createClass({
                 {this.props.menu}
             </div>
      		<div className="content pure-u-1 pure-u-md-3-4">
-     			{this.props.children}
+                {this.props.children}
      		</div>
         </div>
     );

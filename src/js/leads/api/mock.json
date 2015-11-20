@@ -1,4 +1,4 @@
-module.exports = {
+{
    leads : [
       {
          "_id":"56433eaaf9a6e5219b26f776",
@@ -85,8 +85,5 @@ module.exports = {
             "type" : "agent"
          }
       }
-   ],
-   meta : {
-
-   }
-};
+   ]
+}

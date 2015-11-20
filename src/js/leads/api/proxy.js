@@ -1,4 +1,4 @@
-var mock = require('./mock');
+var mock = require('./mock.json');
 
 var ACTIVE_STATES = ['pending', 'applied'];
 
@@ -57,8 +57,10 @@ module.exports = {
 
   },
 
-  update : function () {
-
+  update : function (lead) {
+    return new Promise(function(resolve, reject) {
+      resolve(lead);
+    });
   },
 
   dismiss : function (id) {

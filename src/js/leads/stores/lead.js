@@ -3,10 +3,6 @@ var Reflux = require('reflux');
 module.exports = Reflux.createStore({
   listenables : require('../actions'),
 
-  init : function () {
-
-  },
-
   getInitialState : function () {
     return {
       lead : {
@@ -19,12 +15,14 @@ module.exports = Reflux.createStore({
   },
 
   onLoadLeadCompleted : function (lead) {
-    this.lead = lead;
     this.trigger({ lead : lead });
   },
 
-  onChangeStatus : function (status) {
-    this.lead.status = status;
-    this.trigger({ lead : this.lead });
+  onUpdateSuccess : function (lead) {
+    this.trigger({ lead : lead, errors : null });
+  },
+
+  onUpdateFailed : function (lead, errors) {
+    this.trigger({ lead : lead, errors : errors });
   }
 });

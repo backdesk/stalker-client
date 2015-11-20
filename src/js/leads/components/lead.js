@@ -1,109 +1,86 @@
-    var React = require('react'),
-        Reflux = require('reflux');
+var React = require('react'),
+    Reflux = require('reflux'),
+    FormError = require('../../shared/components/formError'),
+    Layout = require('../../shared/components/layout');
 
-    var leadStore = require('../stores/lead'),
-        actions = require('../actions');
+var leadStore = require('../stores/lead'),
+    actions = require('../actions');
 
-    var utils = require('../../shared/utils');
 
-    var LeadActivity = React.createClass({
-      render : function () {
-        var p = this.props.comment;
+var Lead = React.createClass({
+  getInitialState : function () {
+    return {
+      details : '',
+      description : '',
+      status : ''
+    }
+  },
 
-        return (
-          <li>
-            <p>{p.subject}</p>
-            <p>{p.content}</p>
-          </li>
-        );
-      }
-    });
+  componentWillReceiveProps : function (props) {
+    this.setState(props.lead);
+  },
 
-    var LeadActivityList = React.createClass({
-      render : function () {
-        var commentNodes =  this.props.comments.map(function (comment) {
-          return <LeadActivity key={comment._id} comment={comment} />
-        });
+  handleSubmit : function (e) {
+    e.preventDefault();
 
-        return (
-          <div>
-            <h4>Activity Log</h4>
-            <ul>
-              {commentNodes}
-            </ul>
-          </div>
-        );
-      }
-    });
+    this.props.onSubmit(this.state);
+  },
 
-    var LeadActivityForm = React.createClass({
-      render : function () {
-        return (
-          <form>
-            <div>
-              <label htmlFor="details">Details: </label>
-              <input id="details" name="details" />
-            </div>
-            <div>
-              <label htmlFor="description">Description: </label>
-              <textarea id="description" name="description" />
-            </div>
-          </form>
-        );
-      }
-    });
+  handleChange : function (e) {
+    var state = {}, name = e.target.getAttribute('name');
 
-    var Lead = React.createClass({
-      propTypes: {
-        lead : React.PropTypes.object.isRequired
-      },
+    state[name] = e.target.value;
 
-      handleStatusChange : function (e) {
-        var options = e.target.options;
+    this.setState(state);
+  },
 
-        actions.changeStatus(utils.getSelectedOption(options));
-      },
+  render : function () {
+    var p = this.state;
 
-      render : function () {
-        var p = this.props.lead;
+    return (
+      <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit}>
+        <fieldset>
+          <legend>Create/Edit Lead</legend>
 
-        return (
-          <form className="pure-form pure-form-stacked">
-            <fieldset>
-              <legend></legend>
+          <FormError errors={this.props.errors} />
 
-              <label htmlFor="details">Details: </label>
-              <input id="details" name="details" value={p.details} />
+          <label htmlFor="details">Details: </label>
+          <input id="details" name="details" value={p.details} onChange={this.handleChange} />
 
-              <label htmlFor="description">Description: </label>
-              <textarea id="description" name="description" value={p.description} />
+          <label htmlFor="description">Description: </label>
+          <textarea id="description" name="description" value={p.description} />
 
-              <label htmlFor="status">Status:</label>
-              <select id="status" name="status" value={p.status} onChange={this.handleStatusChange}>
-                <option value="junk">Junk</option>
-                <option value="pending">Pending</option>
-                <option value="applied">Applied</option>
-              </select>
+          <label htmlFor="status">Status:</label>
+          <select id="status" name="status" value={p.status}>
+            <option value="junk">Junk</option>
+            <option value="pending">Pending</option>
+            <option value="applied">Applied</option>
+          </select>
+        </fieldset>
+        <input type="submit" value="submit" className="pure-button pure-button-primary" />
+      </form>
+    );
+  }
+});
 
-              <input type="submit" className="pure-button pure-button-primary" value="Save Lead" />
-            </fieldset>
-          </form>
-        );
-      }
-    });
+module.exports = React.createClass({
+  mixins: [Reflux.connect(leadStore)],
 
-    module.exports = React.createClass({
-      mixins: [Reflux.connect(leadStore)],
+  handleSubmit : function (data) {
+    actions.update(data);
+  },
 
-      componentDidMount : function () {
-        actions.loadLead(this.props.routeParams.id);
-      },
+  componentDidMount : function () {
+    if(this.props.routeParams.id) {
+      actions.loadLead(this.props.routeParams.id);
+    }
+  },
 
-      render : function () {
-        return (
-          <div>
-            <Lead lead={this.state.lead} onSubmit={this.handleSubmit} />
-          </div>
-        );
-      }
-    });
+  render : function () {
+    return (
+      <Layout>
+        <Lead lead={this.state.lead} errors={this.state.errors} onSubmit={this.handleSubmit} />
+      </Layout>
+    );
+  }
+});
