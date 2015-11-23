@@ -12,7 +12,7 @@ module.exports = {
         resolve(data);
       } else {
         reject({
-          message : 'No record lead found.'
+          message : 'No record found.'
         });
       }
     });

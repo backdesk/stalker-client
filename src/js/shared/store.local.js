@@ -18,11 +18,9 @@ module.exports = {
   find : function (id, seg) {
     var found, data = this.read();
 
-    if(seg) {
-      data = data[seg];
-    }
+    if (seg) data = data[seg];
 
-    if(data && data.find) {
+    if (data && data.find) {
       found = data.find(function (item) {
         return item._id === id;
       });
