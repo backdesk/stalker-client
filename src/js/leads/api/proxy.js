@@ -1,18 +1,11 @@
-var mock = require('./mock.json');
+var store = require('../../shared/store.local'),
+    utils = require('../../shared/utils');
 
-var ACTIVE_STATES = ['pending', 'applied'];
-
-var findById = function (id) {
-  var data = mock.leads;
-
-  return data.find(function (lead) {
-    return lead._id === id;
-  });
-}
+store.init('leads', require('./mock.json'));
 
 module.exports = {
   getById : function (id) {
-    var data = findById(id);
+    var data = store.find(id, 'leads');
 
     return new Promise(function(resolve, reject) {
       if(data) {
@@ -26,7 +19,7 @@ module.exports = {
   },
 
   get : function (filter) {
-    var data = mock.leads;
+    var data = store.read().leads;
 
     if(filter) {
       filter = filter.split(':');
@@ -53,24 +46,54 @@ module.exports = {
     });
   },
 
-  create : function () {
+  create : function (lead) {
+    var data = store.read();
+
+    lead._id = utils.genObjId();
+
+    data.leads.push(lead);
+    store.save(data);
+
     return new Promise(function(resolve, reject) {
       resolve(lead);
     });
   },
 
   update : function (lead) {
+    var updated = false, index, data = store.read();
+
+    data.leads = data.leads.map(function (item) {
+      if(item._id === lead._id) {
+        return lead;
+      }
+
+      return item;
+    });
+
+    store.save(data);
+
     return new Promise(function(resolve, reject) {
       resolve(lead);
     });
   },
 
   dismiss : function (id) {
-    var data = findById(id);
+    var updated = false, data = store.read();
+
+    data.leads = data.leads.map(function (item) {
+      if(item._id === id) {
+        updated = true;
+        item.status = 'junk';
+      }
+
+      return item;
+    });
+
+    store.save(data);
 
     return new Promise(function(resolve, reject) {
-      if(data) {
-        resolve(data._id);
+      if(updated) {
+        resolve(id);
       } else {
         reject({
           message : 'This lead just won\'t take no for an answer'

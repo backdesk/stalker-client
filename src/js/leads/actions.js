@@ -7,6 +7,7 @@ var Actions = Reflux.createActions({
   'loadLead' : { children : ['completed', 'failed'] },
   'dismiss' : { children : ['completed', 'failed'] },
   'update' : { children : ['success', 'failed'] },
+  'create' : { children : ['success', 'failed'] }
 });
 
 Actions.load.listen(function(filter) {
@@ -22,6 +23,22 @@ Actions.loadLead.listen(function(id) {
 Actions.dismiss.listen(function(id) {
   Proxy.dismiss(id)
     .then(this.completed, this.failed);
+});
+
+Actions.create.listen(function(data) {
+  var errors = [];
+
+  // TODO: Move to object validator.
+  if(data.details.trim().length === 0){
+    errors.push({ message : 'Details cannot be empty.' });
+  }
+
+  if(errors.length) {
+    this.failed(data, errors);
+  } else {
+    Proxy.create(data)
+      .then(this.success, this.failed);
+  }
 });
 
 Actions.update.listen(function(data) {
