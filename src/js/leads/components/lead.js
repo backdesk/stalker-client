@@ -93,7 +93,10 @@ var Lead = React.createClass({
             <option value="manual">Manual</option>
           </select>
         </fieldset>
-        <input type="submit" value="Save" className="pure-button pure-button-primary" />
+
+        <hr />
+
+        <input type="submit" value="Save Lead" className="pure-button pure-button-primary button-large right" />
       </form>
     );
   }

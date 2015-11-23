@@ -25,6 +25,11 @@ h3 {
 	margin-bottom: 1rem;
 }
 
+hr {
+	border: none;
+    border-bottom: 1px solid #ccc;
+}
+
 textarea {
 	width: 100%;
 	resize: none;
@@ -40,6 +45,7 @@ legend {
 }
 
 .button-small {
+	padding: 10px 20px;
     font-size: 85%;
 }
 
@@ -49,4 +55,8 @@ legend {
 
 .button-xlarge {
     font-size: 125%;
+}
+
+.right {
+	float: right;
 }
