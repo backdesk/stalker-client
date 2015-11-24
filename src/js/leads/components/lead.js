@@ -1,10 +1,11 @@
 var React = require('react'),
     Reflux = require('reflux'),
-    update = require('react-addons-update'),
     FormError = require('../../shared/components/formError'),
     Layout = require('../../shared/components/layout');
 
 var leadStore = require('../stores/lead'),
+    update = require('react-addons-update'),
+    utils = require('../../shared/utils'),
     actions = require('../actions');
 
 var Lead = React.createClass({
@@ -15,7 +16,6 @@ var Lead = React.createClass({
       status : '',
       source : {
         name : '',
-        type : '',
         channel : ''
       }
     }
@@ -32,45 +32,31 @@ var Lead = React.createClass({
   },
 
   handleChange : function (e) {
-    var state = {}, target = e.target, name = target.getAttribute('name');
+    var state = {}, el = e.target, name = el.getAttribute('name');
 
-    if(target.tagName === 'SELECT') {
-      state[name] = target.options[target.selectedIndex].value;
+    if(name === 'name' || name === 'channel') {
+      state.source = {
+        [name] : { $set : utils.getInputValue(el) }
+      };
     } else {
-      state[name] = target.value;
+      state[name] = { $set : utils.getInputValue(el) }
     }
 
-    this.setState(state);
-  },
-
-  handleSourceChange : function (e) {
-    var state = {}, target = e.target, name = target.getAttribute('name');
-
-    if(target.tagName === 'SELECT') {
-      state[name] = { $set : target.options[target.selectedIndex].value };
-    } else {
-      state[name] = { $set : target.value };
-    }
-
-    var mew = update(this.state, {
-      source : state
-    })
-
-    this.setState(mew);
+    this.setState(update(this.state, state));
   },
 
   render : function () {
     var p = this.state;
 
     return (
-      <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit}>
+      <form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Create/Edit Lead</legend>
 
           <FormError errors={this.props.errors} />
 
           <label htmlFor="details">Details: </label>
-          <input id="details" name="details" value={p.details} onChange={this.handleChange} />
+          <input className="lead-details" id="details" name="details" value={p.details} onChange={this.handleChange} />
 
           <label htmlFor="description">Description: </label>
           <textarea id="description" name="description" value={p.description} onChange={this.handleChange} />
@@ -83,10 +69,10 @@ var Lead = React.createClass({
           </select>
 
           <label htmlFor="name">Origin: </label>
-          <input id="name" name="name" value={p.source.name} onChange={this.handleSourceChange} />
+          <input id="name" name="name" value={p.source.name} onChange={this.handleChange} />
 
           <label htmlFor="channel">Channel:</label>
-          <select id="channel" name="channel" value={p.source.channel} onChange={this.handleSourceChange}>
+          <select id="channel" name="channel" value={p.source.channel} onChange={this.handleChange}>
             <option value="email">Email</option>
             <option value="web">Web</option>
             <option value="phone">Phone</option>
