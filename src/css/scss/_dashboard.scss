@@ -1,9 +1,11 @@
 .dashboard {
 	.panel {
+		overflow: hidden;
 		margin-bottom: 30px;
 
 		h3 {
 			margin-top: 0;
+			display:inline-block;
 		}
 	}
 }

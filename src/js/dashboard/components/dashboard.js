@@ -2,7 +2,9 @@ var React = require('react');
 
 var Layout = require('../../shared/components/layout'),
     Agents = require('../../agents/components/agents'),
-    Leads  = require('../../leads/components/leads');
+    LeadList  = require('../../leads/components/lead.list'),
+    LeadCard  = require('../../leads/components/lead.card'),
+    Link = require('react-router').Link;
 
 var Panel = React.createClass({
   render : function () {
@@ -13,7 +15,7 @@ var Panel = React.createClass({
       </section>
     );
   }
-})
+});
 
 module.exports = React.createClass({
   render : function () {
@@ -23,7 +25,11 @@ module.exports = React.createClass({
       <Layout>
         <div className="dashboard">
           <Panel title="Fresh Donuts">
-            <Leads filter="status:pending" />
+            <div className="mini-nav right">
+                <Link to="/leads/create">Create</Link>
+                <Link to="/leads">View All</Link>
+            </div>
+            <LeadList item={LeadCard} filter="status:pending" />
           </Panel>
           <Panel title="Runners and Gunners">
             <Agents mode="chase" />

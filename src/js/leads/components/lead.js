@@ -3,13 +3,14 @@ var React = require('react'),
     update = require('react-addons-update'),
     FormError = require('../../shared/components/formError'),
     Layout = require('../../shared/components/layout'),
-    AgentFinder = require('../../agents/components/agent.finder');
+    AgentFinder = require('../../agents/components/agent.finder'),
+    FormContainer = require('../../shared/components/form.container');
 
 var leadStore = require('../stores/lead'),
     utils = require('../../shared/utils'),
     actions = require('../actions');
 
-var Lead = React.createClass({
+var LeadForm = React.createClass({
   getInitialState : function () {
     return {
       lead : {
@@ -22,7 +23,7 @@ var Lead = React.createClass({
           company : ''
         }
       },
-      message : null
+      result : null
     }
   },
 
@@ -65,8 +66,6 @@ var Lead = React.createClass({
 
   render : function () {
     var p = this.state.lead;
-
-    console.log(p);
 
     return (
       <form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
@@ -112,6 +111,8 @@ module.exports = React.createClass({
   mixins: [Reflux.connect(leadStore)],
 
   handleSubmit : function (data) {
+    this.setState(update(this.state, { pending : { $set : true } }));
+
     if(this.props.routeParams.id) {
       actions.update(data);
     } else {
@@ -128,8 +129,9 @@ module.exports = React.createClass({
   render : function () {
     return (
       <Layout>
-        <div>{this.state.message}</div>
-        <Lead lead={this.state.lead} errors={this.state.errors} onSubmit={this.handleSubmit} />
+        <FormContainer result={this.state.result} pending={this.state.pending}>
+          <LeadForm lead={this.state.lead} errors={this.state.errors} onSubmit={this.handleSubmit} />
+        </FormContainer>
       </Layout>
     );
   }

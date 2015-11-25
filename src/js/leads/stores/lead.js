@@ -12,20 +12,21 @@ module.exports = Reflux.createStore({
         description : '',
         comments : []
       },
-      message : null
+      message : null,
+      pending : true
     }
   },
 
   onLoadLeadCompleted : function (lead) {
-    this.trigger({ lead : lead });
+    this.trigger({ lead : lead, pending : false });
   },
 
   onUpdateSuccess : function (lead) {
-    this.trigger({ lead : lead, errors : null, message: 'Success' });
+    this.trigger({ lead : lead, errors : null, result: 'success', pending : false });
   },
 
   onUpdateFailed : function (lead, errors) {
-    this.trigger({ lead : lead, errors : errors });
+    this.trigger({ lead : lead, errors : errors, result: 'failed', pending : false });
   },
 
   onCreateSuccess : function (lead) {
