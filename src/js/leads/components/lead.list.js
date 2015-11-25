@@ -31,6 +31,10 @@ var LeadList = function (ListItem) {
   });
 };
 
+/**
+ * Filtering locally shouldn't really be necessary but there's a glitch in the way I am modifying
+ * individual records and splurging state within the store.
+ */
 module.exports = React.createClass({
   mixins : [Reflux.connectFilter(leadsStore, 'leads', function(data) {
     var filter = this.props.filter;

@@ -14,13 +14,9 @@
 }
 
 .lead-card .dismiss {
-    background-color: #000;
-    color: #fff;
-    font-size: 11px;
     position: absolute;
     right: 10px;
     top: 7.5px;
-    letter-spacing: 1px;
 }
 
 .lead-card .header {
@@ -37,6 +33,10 @@
     		text-decoration: underline;
     	}
     }
+}
+
+.lead-action {
+    float: right;
 }
 
 .lead-editor {

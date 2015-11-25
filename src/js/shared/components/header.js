@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react'),
+    Link = require('react-router').Link;
 
 module.exports = React.createClass({
   handleClick : function (e) {
@@ -12,7 +13,7 @@ module.exports = React.createClass({
     		<ul className="nav-options pure-menu-list">
           <li className="pure-menu-item"><a href="#" className="pure-menu-link">Taim</a></li>
           <li className="pure-menu-item"><a href="#" className="pure-menu-link">Zombies</a></li>
-          <li className="pure-menu-item"><a href="#" className="pure-menu-link">Leads</a></li>
+          <li className="pure-menu-item"><Link to="/leads" className="pure-menu-link">Leads</Link></li>
           <li className="pure-menu-item"><a href="#" className="pure-menu-link">Settings</a></li>
           <li className="pure-menu-item"><a href="#" className="pure-menu-link">Bai</a></li>
         </ul>

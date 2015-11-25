@@ -25,6 +25,7 @@ Actions.dismiss.listen(function(id) {
     .then(this.completed, this.failed);
 });
 
+// TODO: Merge with update now I know what I'm doing :)
 Actions.create.listen(function(data) {
   var errors = [];
 

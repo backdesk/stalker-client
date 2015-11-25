@@ -62,8 +62,6 @@ module.exports = {
   update : function (lead) {
     var updated = false, index, data = store.read();
 
-    console.log(lead);
-
     data.leads = data.leads.map(function (item) {
       if(item._id === lead._id) {
         return lead;
