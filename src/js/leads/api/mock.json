@@ -1,5 +1,5 @@
 {
-   leads : [
+   "leads" : [
       {
          "_id":"56433eaaf9a6e5219b26f776",
          "created":"2015-11-11T13:07:14+00:00",
@@ -10,6 +10,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       },
@@ -23,6 +24,7 @@
          "source" : {
             "channel" : "web",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       },
@@ -36,6 +38,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       },
@@ -48,6 +51,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       },
@@ -59,6 +63,7 @@
          "status":"junk","source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       },
@@ -70,6 +75,7 @@
          "status":"junk","source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       },
@@ -82,6 +88,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "company" : "Bogus",
             "type" : "agent"
          }
       }

@@ -1,10 +1,11 @@
 var React = require('react'),
     Reflux = require('reflux'),
+    update = require('react-addons-update'),
     FormError = require('../../shared/components/formError'),
-    Layout = require('../../shared/components/layout');
+    Layout = require('../../shared/components/layout'),
+    AgentFinder = require('../../agents/components/agent.finder');
 
 var leadStore = require('../stores/lead'),
-    update = require('react-addons-update'),
     utils = require('../../shared/utils'),
     actions = require('../actions');
 
@@ -16,7 +17,8 @@ var Lead = React.createClass({
       status : '',
       source : {
         name : '',
-        channel : ''
+        channel : '',
+        company : ''
       }
     }
   },
@@ -45,6 +47,15 @@ var Lead = React.createClass({
     this.setState(update(this.state, state));
   },
 
+  handleOriginChange : function (agent) {
+    this.setState(update(this.state, {
+      source : {
+        name : { $set : agent.name },
+        company : { $set : agent.company }
+      }
+    }));
+  },
+
   render : function () {
     var p = this.state;
 
@@ -69,7 +80,7 @@ var Lead = React.createClass({
           </select>
 
           <label htmlFor="name">Origin: </label>
-          <input id="name" name="name" value={p.source.name} onChange={this.handleChange} />
+          <AgentFinder name={p.source.name} onSelect={this.handleOriginChange} />
 
           <label htmlFor="channel">Channel:</label>
           <select id="channel" name="channel" value={p.source.channel} onChange={this.handleChange}>

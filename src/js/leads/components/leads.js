@@ -30,7 +30,7 @@ var LeadCard = React.createClass({
           <a href="#" onClick={this.handleClick}>{lead.details}</a><span className="last-update">Last updated {moment(lead.lastUpdate).fromNow()}</span>
         </header>
         <section className="info">
-          <small className="source">From <a href="#">{lead.source.name} @ Bogus</a> ({lead.source.type}) via {lead.source.channel}</small>
+          <small className="source">From <a href="#">{lead.source.name} @ {lead.source.company}</a> ({lead.source.type}) via {lead.source.channel}</small>
           <a href="#" onClick={this.handleDismiss} className="dismiss button-xsmall pure-button">Dismiss</a>
         </section>
       </div>

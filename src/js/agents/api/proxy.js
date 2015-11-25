@@ -1,7 +1,6 @@
-var mock = require('./mock');
-var history = require('./mock.history');
-var moment = require('moment');
-
+var store = require('../../shared/store.local')(),
+    utils = require('../../shared/utils'),
+    moment = require('moment');
 
 var ABYSS_THRESHOLD = 604800 * 2;
 
@@ -27,14 +26,29 @@ var sortByLastContact = function (data) {
   });
 };
 
+store.init('agents', require('./mock.json'));
 
 module.exports = {
   getById : function (id) {
 
   },
 
+  find : function (term) {
+    var rx, data = store.read().agents, results = [];
+
+    rx = new RegExp('^' + utils.escapeRegex(term), 'i');
+
+    results = data.filter(function (agent) {
+      return rx.test(agent.name) || rx.test(agent.company);
+    });
+
+    return new Promise(function(resolve, reject) {
+      resolve(results);
+    });
+  },
+
   get : function (mode, filter) {
-    var data = mock.agents;
+    var data = store.read().agents;
 
     if(mode) {
       if(mode === 'chase') {

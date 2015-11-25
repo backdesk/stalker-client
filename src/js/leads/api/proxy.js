@@ -1,4 +1,4 @@
-var store = require('../../shared/store.local'),
+var store = require('../../shared/store.local')(),
     utils = require('../../shared/utils');
 
 store.init('leads', require('./mock.json'));
@@ -61,6 +61,8 @@ module.exports = {
 
   update : function (lead) {
     var updated = false, index, data = store.read();
+
+    console.log(lead);
 
     data.leads = data.leads.map(function (item) {
       if(item._id === lead._id) {

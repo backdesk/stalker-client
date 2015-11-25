@@ -9,5 +9,9 @@ module.exports = Reflux.createStore({
 
 	onLoadCompleted : function (agents) {
 		this.trigger({ agents : agents });
+	},
+
+	onFindCompleted : function (agents) {
+		this.trigger({ agents : agents });
 	}
 });

@@ -25,6 +25,7 @@ ReactDom.render((
   <Router>
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard}/>
+      <Route path="leads" component={Leads} />
       <Route path="leads/create" component={Lead} />
       <Route path="leads/:id" component={Lead} />
     </Route>

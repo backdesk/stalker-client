@@ -21,5 +21,9 @@ module.exports = {
     }
 
     return el.value;
+  },
+
+  escapeRegex : function (val) {
+    return val.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
   }
 };
