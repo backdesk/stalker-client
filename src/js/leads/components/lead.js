@@ -12,25 +12,30 @@ var leadStore = require('../stores/lead'),
 var Lead = React.createClass({
   getInitialState : function () {
     return {
-      details : '',
-      description : '',
-      status : '',
-      source : {
-        name : '',
-        channel : '',
-        company : ''
-      }
+      lead : {
+        details : '',
+        description : '',
+        status : '',
+        source : {
+          name : '',
+          channel : '',
+          company : ''
+        }
+      },
+      message : null
     }
   },
 
   componentWillReceiveProps : function (props) {
-    this.setState(props.lead);
+    this.setState(update(this.state, {
+      lead : { $set : props.lead }
+    }));
   },
 
   handleSubmit : function (e) {
     e.preventDefault();
 
-    this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state.lead);
   },
 
   handleChange : function (e) {
@@ -44,20 +49,24 @@ var Lead = React.createClass({
       state[name] = { $set : utils.getInputValue(el) }
     }
 
-    this.setState(update(this.state, state));
+    this.setState({ lead : update(this.state.lead, state) });
   },
 
   handleOriginChange : function (agent) {
-    this.setState(update(this.state, {
-      source : {
-        name : { $set : agent.name },
-        company : { $set : agent.company }
-      }
-    }));
+    this.setState({
+      lead: update(this.state.lead, {
+        source : {
+          name : { $set : agent.name },
+          company : { $set : agent.company }
+        }
+      })
+    });
   },
 
   render : function () {
-    var p = this.state;
+    var p = this.state.lead;
+
+    console.log(p);
 
     return (
       <form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
@@ -119,6 +128,7 @@ module.exports = React.createClass({
   render : function () {
     return (
       <Layout>
+        <div>{this.state.message}</div>
         <Lead lead={this.state.lead} errors={this.state.errors} onSubmit={this.handleSubmit} />
       </Layout>
     );

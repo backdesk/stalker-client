@@ -1,4 +1,5 @@
-var Reflux = require('reflux');
+var Reflux = require('reflux'),
+    update = require('react-addons-update');
 
 module.exports = Reflux.createStore({
   listenables : require('../actions'),
@@ -10,7 +11,8 @@ module.exports = Reflux.createStore({
         details : '',
         description : '',
         comments : []
-      }
+      },
+      message : null
     }
   },
 
@@ -19,7 +21,7 @@ module.exports = Reflux.createStore({
   },
 
   onUpdateSuccess : function (lead) {
-    this.trigger({ lead : lead, errors : null });
+    this.trigger({ lead : lead, errors : null, message: 'Success' });
   },
 
   onUpdateFailed : function (lead, errors) {
