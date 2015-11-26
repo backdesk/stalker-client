@@ -1,7 +1,7 @@
 var React = require('react');
 
 var Layout = require('../../shared/components/layout'),
-    Agents = require('../../agents/components/agents'),
+    Sources = require('../../sources/components/sources'),
     LeadList  = require('../../leads/components/lead.list'),
     LeadCard  = require('../../leads/components/lead.card'),
     Link = require('react-router').Link;
@@ -19,8 +19,6 @@ var Panel = React.createClass({
 
 module.exports = React.createClass({
   render : function () {
-    var agents = <Agents />;
-
     return (
       <Layout>
         <div className="dashboard">
@@ -32,7 +30,7 @@ module.exports = React.createClass({
             <LeadList item={LeadCard} filter="status:pending" />
           </Panel>
           <Panel title="Runners and Gunners">
-            <Agents mode="chase" />
+            <Sources mode="chase" />
           </Panel>
         </div>
       </Layout>

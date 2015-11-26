@@ -26,20 +26,30 @@ var sortByLastContact = function (data) {
   });
 };
 
-store.init('agents', require('./mock.json'));
+store.init('sources', require('./mock.json'));
 
 module.exports = {
   getById : function (id) {
+    var data = store.find(id, 'sources');
 
+    return new Promise(function(resolve, reject) {
+      if(data) {
+        resolve(data);
+      } else {
+        reject({
+          message : 'No record found.'
+        });
+      }
+    });
   },
 
   find : function (term) {
-    var rx, data = store.read().agents, results = [];
+    var rx, data = store.read().sources, results = [];
 
     rx = new RegExp('^' + utils.escapeRegex(term), 'i');
 
-    results = data.filter(function (agent) {
-      return rx.test(agent.name) || rx.test(agent.company);
+    results = data.filter(function (source) {
+      return rx.test(source.name) || rx.test(source.company);
     });
 
     return new Promise(function(resolve, reject) {
@@ -48,14 +58,14 @@ module.exports = {
   },
 
   get : function (mode, filter) {
-    var data = store.read().agents;
+    var data = store.read().sources;
 
     if(mode) {
       if(mode === 'chase') {
-        data = data.filter(function (agent) {
-          var timeElapsed = moment().diff(moment(agent.lastContact), 'seconds');
+        data = data.filter(function (source) {
+          var timeElapsed = moment().diff(moment(source.lastContact), 'seconds');
 
-          return agent.status === 'chasing' && timeElapsed < ABYSS_THRESHOLD;
+          return source.status === 'chasing' && timeElapsed < ABYSS_THRESHOLD;
         });
 
         sortByLastContact(data);
@@ -68,8 +78,8 @@ module.exports = {
       filter = filter.split(':');
 
       if(filter[0] === 'status') {
-        data = data.filter(function (agent) {
-          return agent.status === filter[1];
+        data = data.filter(function (source) {
+          return source.status === filter[1];
         });
       }
     }

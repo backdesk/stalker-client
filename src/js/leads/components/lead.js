@@ -3,7 +3,7 @@ var React = require('react'),
     update = require('react-addons-update'),
     FormError = require('../../shared/components/formError'),
     Layout = require('../../shared/components/layout'),
-    AgentFinder = require('../../agents/components/agent.finder'),
+    SourceFinder = require('../../sources/components/source.finder'),
     FormContainer = require('../../shared/components/form.container');
 
 var leadStore = require('../stores/lead'),
@@ -20,7 +20,8 @@ var LeadForm = React.createClass({
         source : {
           name : '',
           channel : '',
-          company : ''
+          company : '',
+          _id : null
         }
       },
       result : null
@@ -58,7 +59,8 @@ var LeadForm = React.createClass({
       lead: update(this.state.lead, {
         source : {
           name : { $set : agent.name },
-          company : { $set : agent.company }
+          company : { $set : agent.company },
+          _id : { $set : agent._id }
         }
       })
     });
@@ -88,7 +90,7 @@ var LeadForm = React.createClass({
           </select>
 
           <label htmlFor="name">Origin: </label>
-          <AgentFinder name={p.source.name} onSelect={this.handleOriginChange} />
+          <SourceFinder name={p.source.name} onSelect={this.handleOriginChange} />
 
           <label htmlFor="channel">Channel:</label>
           <select id="channel" name="channel" value={p.source.channel} onChange={this.handleChange}>

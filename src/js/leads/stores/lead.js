@@ -1,5 +1,4 @@
-var Reflux = require('reflux'),
-    update = require('react-addons-update');
+var Reflux = require('reflux');
 
 module.exports = Reflux.createStore({
   listenables : require('../actions'),

@@ -2,7 +2,7 @@ var React = require('react'),
     update = require('react-addons-update'),
 		Reflux = require('reflux');
 
-var agentsStore = require('../stores/agents'),
+var sourcesStore = require('../stores/sources'),
     actions = require('../actions'),
 	  utils = require('../../shared/utils');
 
@@ -17,7 +17,7 @@ var ResultItem = React.createClass({
     var p = this.props.agent;
 
     return (
-      <li className="agent-item">
+      <li className="source-item">
         <p onClick={this.handleClick}>{p.name} @ {p.company}</p>
       </li>
     );
@@ -41,7 +41,7 @@ var ResultList = React.createClass({
 });
 
 module.exports = React.createClass({
-  mixins: [Reflux.connect(agentsStore)],
+  mixins: [Reflux.connect(sourcesStore)],
 
   getInitialState : function () {
     return {
@@ -55,7 +55,7 @@ module.exports = React.createClass({
 
   resetResults : function () {
     this.setState(update(this.state, {
-      agents : { $set : [] }
+      sources : { $set : [] }
     }));
   },
 
@@ -79,7 +79,7 @@ module.exports = React.createClass({
   render : function () {
     return (
       <div>
-        <ResultList results={this.state.agents} onSelect={this.handleSelect} />
+        <ResultList results={this.state.sources} onSelect={this.handleSelect} />
         <input value={this.state.name} id="name" name="name" onChange={this.handleChange} />
       </div>
     );

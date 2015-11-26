@@ -1,4 +1,4 @@
-.agent-item {
+.source-item {
 	padding: 10px;
     border: 1px solid #ccc;
     border-bottom: none;
@@ -8,12 +8,12 @@
     }
 }
 
-.agent-item:first-of-type {
+.source-item:first-of-type {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
 }
 
-.agent-item:last-of-type {
+.source-item:last-of-type {
 	border-bottom: 1px solid #ccc;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;

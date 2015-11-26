@@ -10,6 +10,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }
@@ -24,6 +25,7 @@
          "source" : {
             "channel" : "web",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }
@@ -38,6 +40,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }
@@ -51,6 +54,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }
@@ -63,6 +67,7 @@
          "status":"junk","source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }
@@ -75,6 +80,7 @@
          "status":"junk","source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }
@@ -88,6 +94,7 @@
          "source" : {
             "channel" : "email",
             "name" : "Trent Lamebars",
+            "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
          }

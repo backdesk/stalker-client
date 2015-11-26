@@ -5,6 +5,28 @@ var React = require('react'),
 
 var actions = require('../actions');
 
+var LeadSource = React.createClass({
+  mixins : [Router.History],
+
+  handleClick : function (e) {
+    e.preventDefault();
+
+    this.history.pushState(null, '/sources/' + this.props.source._id);
+  },
+
+  render : function () {
+    var p = this.props.source;
+
+    if(p.type === 'unknown') {
+      return <small className="source">Unknown</small>
+    }
+
+    return (
+      <small className="source">From <a href="#" onClick={this.handleClick}>{p.name} @ {p.company}</a> ({p.type}) via {p.channel}</small>
+    );
+  }
+});
+
 module.exports = React.createClass({
   mixins : [Router.History],
 
@@ -29,7 +51,7 @@ module.exports = React.createClass({
           <a href="#" onClick={this.handleClick}>{lead.details}</a><span className="last-update">Last updated {moment(lead.lastUpdate).fromNow()}</span>
         </header>
         <section className="info">
-          <small className="source">From <a href="#">{lead.source.name} @ {lead.source.company}</a> ({lead.source.type}) via {lead.source.channel}</small>
+          <LeadSource source={this.props.lead.source} />
           <a href="#" onClick={this.handleDismiss} className="dismiss button-xsmall pure-button">Dismiss</a>
         </section>
       </div>
