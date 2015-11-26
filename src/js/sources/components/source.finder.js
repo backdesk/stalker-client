@@ -65,9 +65,9 @@ module.exports = React.createClass({
   },
 
   handleChange : function (e) {
-  	var el = e.target, term = utils.getInputValue(el);
+    var el = e.target, term = utils.getInputValue(el);
 
-  	if(term && term.trim().length >= TERM_THRESHOLD) {
+    if(term && term.trim().length >= TERM_THRESHOLD) {
       actions.find(term);
   	} else {
       this.resetResults();
