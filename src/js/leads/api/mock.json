@@ -13,7 +13,13 @@
             "_id" : "564c5c2fcf8e7746870d7f9e",
             "company" : "Bogus",
             "type" : "agent"
-         }
+         },
+         "activity" : [
+            { "op" : "auto", "created": "2015-11-16T13:07:14+00:00", "comment" : "Status set to 'junk'" },
+            { "op" : "manual", "created": "2015-11-14T13:07:14+00:00", "comment" : "Tusu an offendit consulatu mnesarchum. Et deleniti inciderint mea!" },
+            { "op" : "auto", "created": "2015-11-14T13:07:14+00:00", "comment" : "Status set to 'waiting'" },
+            { "op" : "manual", "created": "2015-11-13T13:07:14+00:00", "comment" : "Has ex viris oporteat. Usu populo scripta eu."}
+         ]
       },
       {
          "_id":"56433eaadfd2a34b03c2929b",

@@ -10,8 +10,16 @@ var sourceStore = require('../stores/source'),
 
 var SourceInfo = React.createClass({
   render : function () {
+    var meta = this.props.meta;
+
+    if(!meta) return null;
+    console.log(meta);
     return (
-      <p>This source ... </p>
+      <div className="source-meta">
+        <span className="atom"><strong>Success rate: </strong> {meta.successes} out of {meta.leads} leads</span>
+        <span className="atom"><strong>Weight: </strong> {meta.weight}</span>
+        <span className="atom"><strong>Overall rank: </strong> <a href="#">Hopeless</a></span>
+      </div>
     );
   }
 });
@@ -24,7 +32,8 @@ var SourceForm = React.createClass({
         company : '',
         type : '',
         status : '',
-        notes : ''
+        notes : '',
+        meta : null
       }
     }
   },
@@ -57,7 +66,7 @@ var SourceForm = React.createClass({
         <fieldset>
           <legend>Create/Edit Source</legend>
 
-          <SourceInfo />
+          <SourceInfo meta={p.meta} />
 
           <label htmlFor="name">Name: </label>
           <input id="name" name="name" value={p.name} onChange={this.handleChange} />

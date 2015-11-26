@@ -6,7 +6,12 @@
       "type":"misc",
       "lastContact":"2015-11-05T10:19:33",
       "status":"queued",
-      "notes" : "Trent AKA 'oxygen thief' wastes more time than he does skin."
+      "notes" : "Trent AKA 'oxygen thief' wastes more time than he does skin.",
+      "meta" : {
+        "weight" : 100,
+        "successes" : 0,
+        "leads" : 0
+      }
     },
     {
       "_id":"564c5c2f3dc6c2cf63eef989",
