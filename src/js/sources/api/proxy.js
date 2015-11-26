@@ -4,6 +4,26 @@ var store = require('../../shared/store.local')(),
 
 var ABYSS_THRESHOLD = 604800 * 2;
 
+// Hack to mimic reference update on Mongo/Couch
+var updateLeads = function (source) {
+  var leads, data = localStorage.getItem('leads');
+
+  if(data) {
+    data = JSON.parse(data);
+
+    leads = data.leads.map(function (lead) {
+      if(lead.source._id === source._id) {
+        lead.source.name = source.name;
+        lead.source.company = source.company;
+      }
+
+      return lead;
+    });
+
+    localStorage.setItem('leads', JSON.stringify({ leads : leads }));
+  }
+};
+
 var sortByName = function (data) {
   data.sort(function (a, b) {
     a = a.name.toLowerCase(), b = b.name.toLowerCase();
@@ -89,11 +109,36 @@ module.exports = {
     });
   },
 
-  create : function () {
+  create : function (source) {
+    var data = store.read();
 
+    source._id = utils.genObjId();
+
+    data.sources.push(source);
+    store.save(data);
+
+    return new Promise(function(resolve, reject) {
+      resolve(source);
+    });
   },
 
-  update : function () {
+  update : function (source) {
+    var updated = false, index, data = store.read();
 
+    data.sources = data.sources.map(function (item) {
+      if(item._id === source._id) {
+        return source;
+      }
+
+      return item;
+    });
+
+    store.save(data);
+
+    updateLeads(source);
+
+    return new Promise(function(resolve, reject) {
+      resolve(source);
+    });
   }
 };

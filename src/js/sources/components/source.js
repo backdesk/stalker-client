@@ -8,6 +8,14 @@ var sourceStore = require('../stores/source'),
     utils = require('../../shared/utils'),
 		actions = require('../actions');
 
+var SourceInfo = React.createClass({
+  render : function () {
+    return (
+      <p>This source ... </p>
+    );
+  }
+});
+
 var SourceForm = React.createClass({
 	getInitialState : function () {
     return {
@@ -15,14 +23,13 @@ var SourceForm = React.createClass({
         name : '',
         company : '',
         type : '',
-        status : ''
+        status : '',
+        notes : ''
       }
     }
   },
 
   componentWillReceiveProps : function (props) {
-    console.log(props);
-
     this.setState(update(this.state, {
       source : { $set : props.source }
     }));
@@ -31,15 +38,15 @@ var SourceForm = React.createClass({
   handleSubmit : function (e) {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.lead);
+    this.props.onSubmit(this.state.source);
   },
 
-  handleChange : function () {
+  handleChange : function (e) {
     var state = {}, el = e.target, name = el.getAttribute('name');
 
     state[name] = { $set : utils.getInputValue(el) };
 
-    this.setState({ lead : update(this.state.lead, state) });
+    this.setState({ source : update(this.state.source, state) });
   },
 
 	render : function () {
@@ -50,8 +57,35 @@ var SourceForm = React.createClass({
         <fieldset>
           <legend>Create/Edit Source</legend>
 
+          <SourceInfo />
+
           <label htmlFor="name">Name: </label>
-          <input className="source-name" id="name" name="name" value={p.name} onChange={this.handleChange} />
+          <input id="name" name="name" value={p.name} onChange={this.handleChange} />
+
+          <label htmlFor="company">Company: </label>
+          <input id="company" name="company" value={p.company} onChange={this.handleChange} />
+
+          <label htmlFor="notes">Notes: </label>
+          <textarea id="notes" name="notes" value={p.notes} onChange={this.handleChange} />
+
+          <label htmlFor="type">Type:</label>
+          <select id="type" name="type" value={p.type} onChange={this.handleChange}>
+            <option value="agent">Agent</option>
+            <option value="independent">Independent</option>
+            <option value="misc">Misc</option>
+          </select>
+
+          <label htmlFor="status">Status:</label>
+          <select id="status" name="status" value={p.status} onChange={this.handleChange}>
+            <option value="queued">Waiting on me</option>
+            <option value="waiting">Waiting on them</option>
+            <option value="dormant">Zombie</option>
+            <option value="ignore">Abandoned</option>
+          </select>
+
+          <hr />
+
+          <input type="submit" value="Save Source" className="pure-button pure-button-primary button-large right" />
         </fieldset>
       </form>
 		);
@@ -80,8 +114,8 @@ module.exports = React.createClass({
   render : function () {
   	return (
   		<Layout>
-  			<FormContainer>
-  				<SourceForm source={this.state.source} />
+  			<FormContainer result={this.state.result} pending={this.state.pending}>
+  				<SourceForm source={this.state.source}  onSubmit={this.handleSubmit} />
   			</FormContainer>
   		</Layout>
   	);
