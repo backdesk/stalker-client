@@ -19,13 +19,7 @@ var LeadActionButton = React.createClass({
   render : function () {
     return (
       <span className="lead-action">
-        Set status:&nbsp;
-        <select onChange={this.handleChange} value={this.props.status}>
-          <option>Choose a status</option>
-          <option value="pending">Pending</option>
-          <option value="applied">Applied</option>
-          <option value="junk">Junk</option>
-        </select>
+
       </span>
     )
   }

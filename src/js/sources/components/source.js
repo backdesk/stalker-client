@@ -1,5 +1,6 @@
 var React = require('react'),
 		Reflux = require('reflux'),
+    Router = require('react-router'),
     update = require('react-addons-update'),
     FormContainer = require('../../shared/components/form.container'),
 	  Layout = require('../../shared/components/layout');
@@ -8,124 +9,56 @@ var sourceStore = require('../stores/source'),
     utils = require('../../shared/utils'),
 		actions = require('../actions');
 
-var SourceInfo = React.createClass({
+var SourceVitals = React.createClass({
   render : function () {
-    var meta = this.props.meta;
+    var p = this.props.source;
 
-    if(!meta) return null;
-    console.log(meta);
     return (
-      <div className="source-meta">
-        <span className="atom"><strong>Success rate: </strong> {meta.successes} out of {meta.leads} leads</span>
-        <span className="atom"><strong>Weight: </strong> {meta.weight}</span>
-        <span className="atom"><strong>Overall rank: </strong> <a href="#">Hopeless</a></span>
+      <div className="pure-g">
+          <div className="overview pure-u-1">Last heard from many moons ago</div>
+          <div className="column pure-u-1-4">
+            <span className="atom">234</span>
+            <span className="atom-name">Flimper Scampers</span>
+          </div>
+          <div className="column pure-u-1-4">
+            <span className="atom">12</span>
+            <span className="atom-name">Tamborine Salesmen</span>
+          </div>
+          <div className="column pure-u-1-4">
+            <span className="atom">90</span>
+            <span className="atom-name">Failed Attempts at Humanity</span>
+          </div>
+          <div className="column pure-u-1-4">
+            <span className="rank">Useless</span>
+          </div>
       </div>
     );
   }
 });
 
-var SourceForm = React.createClass({
-	getInitialState : function () {
-    return {
-      source : {
-        name : '',
-        company : '',
-        type : '',
-        status : '',
-        notes : '',
-        meta : null
-      }
-    }
-  },
-
-  componentWillReceiveProps : function (props) {
-    this.setState(update(this.state, {
-      source : { $set : props.source }
-    }));
-  },
-
-  handleSubmit : function (e) {
-    e.preventDefault();
-
-    this.props.onSubmit(this.state.source);
-  },
-
-  handleChange : function (e) {
-    var state = {}, el = e.target, name = el.getAttribute('name');
-
-    state[name] = { $set : utils.getInputValue(el) };
-
-    this.setState({ source : update(this.state.source, state) });
-  },
-
-	render : function () {
-    var p = this.state.source;
-
-		return (
-			<form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
-        <fieldset>
-          <legend>Create/Edit Source</legend>
-
-          <SourceInfo meta={p.meta} />
-
-          <label htmlFor="name">Name: </label>
-          <input id="name" name="name" value={p.name} onChange={this.handleChange} />
-
-          <label htmlFor="company">Company: </label>
-          <input id="company" name="company" value={p.company} onChange={this.handleChange} />
-
-          <label htmlFor="notes">Notes: </label>
-          <textarea id="notes" name="notes" value={p.notes} onChange={this.handleChange} />
-
-          <label htmlFor="type">Type:</label>
-          <select id="type" name="type" value={p.type} onChange={this.handleChange}>
-            <option value="agent">Agent</option>
-            <option value="independent">Independent</option>
-            <option value="misc">Misc</option>
-          </select>
-
-          <label htmlFor="status">Status:</label>
-          <select id="status" name="status" value={p.status} onChange={this.handleChange}>
-            <option value="queued">Waiting on me</option>
-            <option value="waiting">Waiting on them</option>
-            <option value="dormant">Zombie</option>
-            <option value="ignore">Abandoned</option>
-          </select>
-
-          <hr />
-
-          <input type="submit" value="Save Source" className="pure-button pure-button-primary button-large right" />
-        </fieldset>
-      </form>
-		);
-	}
-});
-
 module.exports = React.createClass({
-  mixins: [Reflux.connect(sourceStore)],
-
-  handleSubmit : function (data) {
-    this.setState(update(this.state, { pending : { $set : true } }));
-
-    if(this.props.routeParams.id) {
-      actions.update(data);
-    } else {
-      actions.create(data);
-    }
-  },
+  mixins: [Reflux.connect(sourceStore), Router.History],
 
   componentDidMount : function () {
-    if(this.props.routeParams.id) {
-      actions.loadSource(this.props.routeParams.id);
-    }
+    actions.loadSource(this.props.routeParams.id);
+  },
+
+  handleEditClick : function (e) {
+    e.preventDefault();
+
+    this.history.pushState(null, '/sources/edit/' + this.state.source._id);
   },
 
   render : function () {
   	return (
   		<Layout>
-  			<FormContainer result={this.state.result} pending={this.state.pending}>
-  				<SourceForm source={this.state.source}  onSubmit={this.handleSubmit} />
-  			</FormContainer>
+          <div className="source-vitals">
+            <h3>Vitals for {this.state.source.name} </h3>
+            <div className="mini-nav right">
+              <a href="#" className="edit-link" onClick={this.handleEditClick}>Edit Details</a>
+            </div>
+            <SourceVitals source={this.state.source} />
+          </div>
   		</Layout>
   	);
   }

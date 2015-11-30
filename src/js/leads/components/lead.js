@@ -1,9 +1,9 @@
 var React = require('react'),
     Reflux = require('reflux'),
     update = require('react-addons-update'),
-    FormError = require('../../shared/components/formError'),
     Layout = require('../../shared/components/layout'),
     SourceFinder = require('../../sources/components/source.finder'),
+    FormError = require('../../shared/components/form.error'),
     FormContainer = require('../../shared/components/form.container');
 
 var leadStore = require('../stores/lead'),
@@ -54,7 +54,7 @@ var LeadForm = React.createClass({
     this.setState({ lead : update(this.state.lead, state) });
   },
 
-  handleOriginChange : function (agent) {
+  handleSourceChange : function (agent) {
     this.setState({
       lead: update(this.state.lead, {
         source : {
@@ -83,14 +83,16 @@ var LeadForm = React.createClass({
           <textarea id="description" name="description" value={p.description} onChange={this.handleChange} />
 
           <label htmlFor="status">Status:</label>
-          <select id="status" name="status" value={p.status} onChange={this.handleChange}>
+          <select id="status" name="status" className="lead-status" value={p.status} onChange={this.handleChange}>
             <option value="junk">Junk</option>
             <option value="pending">Pending</option>
             <option value="applied">Applied</option>
           </select>
+          <a href="#" className="toggle-comment">Advanced</a>
+          <textarea id="status-comment" name="status-comment" className="status-comment" />
 
-          <label htmlFor="name">Origin: </label>
-          <SourceFinder name={p.source.name} onSelect={this.handleOriginChange} />
+          <label htmlFor="name">Source: </label>
+          <SourceFinder name={p.source.name} onSelect={this.handleSourceChange} />
 
           <label htmlFor="channel">Channel:</label>
           <select id="channel" name="channel" value={p.source.channel} onChange={this.handleChange}>

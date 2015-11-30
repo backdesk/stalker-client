@@ -43,4 +43,24 @@
     .lead-details {
         width: 100%;
     }
+
+    .lead-status {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .toggle-comment {
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .status-comment {
+        min-height: 80px;
+        display: none;
+    }
 }

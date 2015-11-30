@@ -2,15 +2,15 @@
   "sources" : [{
       "_id":"564c5c2fcf8e7746870d7f9e",
       "name":"Trent Lamebars",
-      "company":"Bous",
+      "company":"Bogus",
       "type":"misc",
       "lastContact":"2015-11-05T10:19:33",
       "status":"queued",
-      "notes" : "Trent AKA 'oxygen thief' wastes more time than he does skin.",
-      "meta" : {
-        "weight" : 100,
-        "successes" : 0,
-        "leads" : 0
+      "phone" : "",
+      "email" : "",
+      "notes" : "As awkward as riding a penny farthing with a stubborn front wheel.",
+      "vitals" : {
+
       }
     },
     {
@@ -20,7 +20,9 @@
       "type":"agent",
       "lastContact":"2015-11-18T08:07:33",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fc7f947b288f22a84",
@@ -29,7 +31,9 @@
       "type":"agent",
       "lastContact":"2015-11-18T12:33:26",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f6e0eaa4328249794",
@@ -38,7 +42,9 @@
       "type":"misc",
       "lastContact":"2014-11-08T01:54:11",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fcd3e87d420eab03c",
@@ -47,7 +53,9 @@
       "type":"misc",
       "lastContact":"2015-11-15T10:03:42",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f2545ae826daf9121",
@@ -56,7 +64,9 @@
       "type":"agent",
       "lastContact":"2015-11-13T09:08:49",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f0b249dea4f95f2b1",
@@ -65,7 +75,9 @@
       "type":"misc",
       "lastContact":"2015-11-09T09:15:50",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f192487baed807923",
@@ -74,7 +86,9 @@
       "type":"agent",
       "lastContact":"2015-04-18T10:39:27",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb0b604c5850b4c08",
@@ -83,7 +97,9 @@
       "type":"misc",
       "lastContact":"2014-06-08T05:06:03",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f820b3794bdf897e0",
@@ -92,7 +108,9 @@
       "type":"misc",
       "lastContact":"2015-10-04T11:41:28",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb76ccbcedfd8b9be",
@@ -101,7 +119,9 @@
       "type":"agent",
       "lastContact":"2014-08-19T05:14:39",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb33197104d8e7dca",
@@ -110,7 +130,9 @@
       "type":"agent",
       "lastContact":"2014-04-24T04:53:40",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f54e9af94a57ed472",
@@ -119,7 +141,9 @@
       "type":"agent",
       "lastContact":"2014-04-13T12:30:05",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f4d8de23d8019c0d8",
@@ -128,7 +152,9 @@
       "type":"misc",
       "lastContact":"2015-02-16T08:03:12",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2ffa70ea2e5712a05d",
@@ -137,7 +163,9 @@
       "type":"misc",
       "lastContact":"2015-01-30T10:25:16",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2ffb2134f51050b41c",
@@ -146,7 +174,9 @@
       "type":"agent",
       "lastContact":"2014-10-07T03:12:13",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f3f854479e4b19806",
@@ -155,7 +185,9 @@
       "type":"agent",
       "lastContact":"2015-07-19T02:11:50",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fc595d420a39130b3",
@@ -164,7 +196,9 @@
       "type":"agent",
       "lastContact":"2015-08-24T03:06:46",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f59e33512e7b02db2",
@@ -173,7 +207,9 @@
       "type":"independent",
       "lastContact":"2014-09-24T03:40:56",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f628a4168ba23e987",
@@ -182,7 +218,9 @@
       "type":"agent",
       "lastContact":"2015-01-26T02:06:41",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fc51715bb0b8808dc",
@@ -191,7 +229,9 @@
       "type":"agent",
       "lastContact":"2014-04-21T11:09:01",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f468d197f2cbadb21",
@@ -200,7 +240,9 @@
       "type":"agent",
       "lastContact":"2014-01-29T08:19:02",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f80f2f51c79e7055b",
@@ -209,7 +251,9 @@
       "type":"misc",
       "lastContact":"2015-05-22T09:10:37",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f32fa3b7710bed993",
@@ -218,7 +262,9 @@
       "type":"independent",
       "lastContact":"2015-10-25T10:15:26",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb734ca7e0a76012f",
@@ -227,7 +273,9 @@
       "type":"misc",
       "lastContact":"2014-01-23T09:11:36",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fd922c3da1790d47e",
@@ -236,7 +284,9 @@
       "type":"misc",
       "lastContact":"2015-09-01T01:33:55",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f15a638c9c9f91a2c",
@@ -245,7 +295,9 @@
       "type":"independent",
       "lastContact":"2014-11-05T03:29:54",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f78e2cd40b1d6106a",
@@ -254,7 +306,9 @@
       "type":"independent",
       "lastContact":"2015-10-30T07:16:47",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fde5553565c4fbb4f",
@@ -263,7 +317,9 @@
       "type":"agent",
       "lastContact":"2014-07-18T02:54:32",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fa15f4172bc65f535",
@@ -272,7 +328,9 @@
       "type":"independent",
       "lastContact":"2014-06-27T06:22:21",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fdcfec46f7c2757d6",
@@ -281,7 +339,9 @@
       "type":"independent",
       "lastContact":"2015-09-15T10:35:58",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f62fe0169418a8493",
@@ -290,7 +350,9 @@
       "type":"independent",
       "lastContact":"2014-08-24T12:57:09",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f580f8ca0dbfb631a",
@@ -299,7 +361,9 @@
       "type":"misc",
       "lastContact":"2015-10-24T05:24:52",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f510047b83be68bb8",
@@ -308,7 +372,9 @@
       "type":"independent",
       "lastContact":"2014-12-28T01:42:55",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f9815d8b5dcf1dcab",
@@ -317,7 +383,9 @@
       "type":"misc",
       "lastContact":"2015-10-16T09:38:12",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fcb94042c7f4d7a5f",
@@ -334,7 +402,9 @@
       "type":"independent",
       "lastContact":"2015-01-02T04:46:25",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f34dea76c6e454499",
@@ -343,7 +413,9 @@
       "type":"independent",
       "lastContact":"2015-01-05T02:00:24",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f0fc05e825563d6ef",
@@ -352,7 +424,9 @@
       "type":"agent",
       "lastContact":"2014-01-07T09:22:47",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fc98f8987efd17061",
@@ -361,7 +435,9 @@
       "type":"agent",
       "lastContact":"2015-03-13T12:23:54",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2ff534c6c970db8dcf",
@@ -370,7 +446,9 @@
       "type":"misc",
       "lastContact":"2015-10-09T04:25:38",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f0dd229eb1294e8b5",
@@ -379,7 +457,9 @@
       "type":"agent",
       "lastContact":"2014-08-12T05:55:54",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f8631b61f3a85980a",
@@ -388,7 +468,9 @@
       "type":"misc",
       "lastContact":"2014-06-02T03:06:07",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fcaf6cfb101655f29",
@@ -397,7 +479,9 @@
       "type":"agent",
       "lastContact":"2014-06-23T05:04:50",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f750bd9cd3eb27c8a",
@@ -406,7 +490,9 @@
       "type":"independent",
       "lastContact":"2015-02-07T08:30:23",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f1b82f48f3cb98bec",
@@ -415,7 +501,9 @@
       "type":"agent",
       "lastContact":"2014-09-25T07:50:06",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f29f06cf543f34920",
@@ -424,7 +512,9 @@
       "type":"independent",
       "lastContact":"2015-02-11T03:37:26",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f7f0c980421d4832c",
@@ -433,7 +523,9 @@
       "type":"misc",
       "lastContact":"2014-12-04T11:55:45",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb834f3d293499bd7",
@@ -442,7 +534,9 @@
       "type":"independent",
       "lastContact":"2015-06-13T07:12:53",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f08d807228e8d881d",
@@ -451,7 +545,9 @@
       "type":"agent",
       "lastContact":"2014-04-27T06:34:02",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fefa4ebb75b5bbdc2",
@@ -460,7 +556,9 @@
       "type":"independent",
       "lastContact":"2014-05-25T05:03:21",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f8f7853a798708c86",
@@ -469,7 +567,9 @@
       "type":"agent",
       "lastContact":"2014-12-29T10:29:57",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f9e1111e942e16e6a",
@@ -478,7 +578,9 @@
       "type":"independent",
       "lastContact":"2015-02-18T11:05:44",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f867c9942d7a9a852",
@@ -487,7 +589,9 @@
       "type":"agent",
       "lastContact":"2014-06-17T04:29:45",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f0d0ab84062123a1e",
@@ -496,7 +600,9 @@
       "type":"misc",
       "lastContact":"2015-09-13T01:31:18",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f1aaee5477d103fd3",
@@ -505,7 +611,9 @@
       "type":"agent",
       "lastContact":"2015-04-07T01:19:32",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb48f125e5b8342dd",
@@ -514,7 +622,9 @@
       "type":"agent",
       "lastContact":"2014-01-31T09:09:48",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fec44de460b88a369",
@@ -523,7 +633,9 @@
       "type":"misc",
       "lastContact":"2014-08-02T08:31:28",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fb348b3bd33179254",
@@ -532,7 +644,9 @@
       "type":"agent",
       "lastContact":"2015-10-31T02:51:20",
       "status":"queued",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f007545daf48d497d",
@@ -541,7 +655,9 @@
       "type":"misc",
       "lastContact":"2015-09-07T06:44:12",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f36b16eb99261b278",
@@ -550,7 +666,9 @@
       "type":"independent",
       "lastContact":"2014-01-23T08:51:41",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2fa68e31a57a77b895",
@@ -559,7 +677,9 @@
       "type":"misc",
       "lastContact":"2015-06-03T02:33:48",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f32532efddc2f6c23",
@@ -568,7 +688,9 @@
       "type":"agent",
       "lastContact":"2015-04-25T04:14:43",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f6bd8f3d6576d6d40",
@@ -577,7 +699,9 @@
       "type":"agent",
       "lastContact":"2015-09-23T06:10:12",
       "status":"chasing",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     },
     {
       "_id":"564c5c2f686f8bad7c980e49",
@@ -586,7 +710,9 @@
       "type":"independent",
       "lastContact":"2014-06-04T09:13:04",
       "status":"dormant",
-      "notes" : ""
+      "notes" : "",
+			"phone" : "",
+			"email" : ""
     }
   ]
 }

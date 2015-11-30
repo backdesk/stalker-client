@@ -19,8 +19,42 @@
     border-bottom-right-radius: 2px;
 }
 
-.source-meta {
-    .atom {
-        margin-right: 10px;
+.source-vitals {
+    h3 {
+        margin-top: 0;
+        display: inline-block;
+    }
+
+    .pure-g {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+    }
+
+    .column {
+        border-right: 1px solid #ccc;
+        box-sizing: border-box;
+
+        text-align: center;
+        padding: 10px 0;
+
+        .atom {
+            font-size: 2rem;
+            display: block;
+        }
+
+        .rank {
+            font-size: 2rem;
+            display: inline-block;
+            padding: 8px;
+        }
+    }
+
+    .overview {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .column:last-of-type {
+        border: none;
     }
 }

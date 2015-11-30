@@ -39,6 +39,8 @@ module.exports = React.createClass({
   handleDismiss : function (e) {
     e.preventDefault();
 
+    this.setState({ status : 'junk' });
+
     actions.dismiss(this.props.lead._id);
   },
 
