@@ -1,6 +1,7 @@
 var React = require('react'),
     Reflux = require('reflux'),
     update = require('react-addons-update'),
+    classNames = require('classnames'),
     Layout = require('../../shared/components/layout'),
     SourceFinder = require('../../sources/components/source.finder'),
     FormError = require('../../shared/components/form.error'),
@@ -9,6 +10,49 @@ var React = require('react'),
 var leadStore = require('../stores/lead'),
     utils = require('../../shared/utils'),
     actions = require('../actions');
+
+var LeadStatus = React.createClass({
+  getInitialState : function () {
+    return {
+      advanced : false
+    }
+  },
+
+  handleChange : function () {
+
+  },
+
+  handleAdvancedClick : function (e) {
+    e.preventDefault();
+
+    if(this.state.advanced === false) {
+      this.setState({ advanced : true });
+    } else {
+      this.setState({ advanced : false });
+    }
+  },
+
+  render : function () {
+     var classes = classNames({
+      'status-comment' : true,
+      'visible': this.state.advanced
+    });
+
+    return (
+      <div>
+        <label htmlFor="status">Status:</label>
+        <select id="status" name="status" className="lead-status">
+          <option value="junk">Junk</option>
+          <option value="pending">Pending</option>
+          <option value="applied">Applied</option>
+        </select>
+        <a href="#" className="toggle-comment" onClick={this.handleAdvancedClick}>Advanced</a>
+
+        <textarea id="status-comment" name="status-comment" className={classes} />
+      </div>
+    );
+  }
+});
 
 var LeadForm = React.createClass({
   getInitialState : function () {
@@ -56,7 +100,7 @@ var LeadForm = React.createClass({
 
   handleSourceChange : function (agent) {
     this.setState({
-      lead: update(this.state.lead, {
+      lead : update(this.state.lead, {
         source : {
           name : { $set : agent.name },
           company : { $set : agent.company },
@@ -90,6 +134,8 @@ var LeadForm = React.createClass({
           </select>
           <a href="#" className="toggle-comment">Advanced</a>
           <textarea id="status-comment" name="status-comment" className="status-comment" />
+
+          <LeadStatus />
 
           <label htmlFor="name">Source: </label>
           <SourceFinder name={p.source.name} onSelect={this.handleSourceChange} />

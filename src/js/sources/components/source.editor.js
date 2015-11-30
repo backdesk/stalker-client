@@ -1,15 +1,15 @@
 var React = require('react'),
-		Reflux = require('reflux'),
+    Reflux = require('reflux'),
     update = require('react-addons-update'),
     FormContainer = require('../../shared/components/form.container'),
-	  Layout = require('../../shared/components/layout');
+    Layout = require('../../shared/components/layout');
 
 var sourceStore = require('../stores/source'),
     utils = require('../../shared/utils'),
-		actions = require('../actions');
+    actions = require('../actions');
 
 var SourceForm = React.createClass({
-	getInitialState : function () {
+  getInitialState : function () {
     return {
       source : {
         name : '',
@@ -42,11 +42,11 @@ var SourceForm = React.createClass({
     this.setState({ source : update(this.state.source, state) });
   },
 
-	render : function () {
+  render : function () {
     var p = this.state.source;
 
-		return (
-			<form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
+    return (
+      <form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Create/Edit Source</legend>
 
@@ -85,8 +85,8 @@ var SourceForm = React.createClass({
           <input type="submit" value="Save Source" className="pure-button pure-button-primary button-large right" />
         </fieldset>
       </form>
-		);
-	}
+    );
+  }
 });
 
 module.exports = React.createClass({
@@ -109,12 +109,12 @@ module.exports = React.createClass({
   },
 
   render : function () {
-  	return (
-  		<Layout>
+    return (
+      <Layout>
         <FormContainer result={this.state.result} pending={this.state.pending}>
-  				<SourceForm source={this.state.source}  onSubmit={this.handleSubmit} />
-  			</FormContainer>
-  		</Layout>
-  	);
+          <SourceForm source={this.state.source}  onSubmit={this.handleSubmit} />
+        </FormContainer>
+      </Layout>
+    );
   }
 });

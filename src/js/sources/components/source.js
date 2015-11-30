@@ -1,13 +1,13 @@
 var React = require('react'),
-		Reflux = require('reflux'),
+    Reflux = require('reflux'),
     Router = require('react-router'),
     update = require('react-addons-update'),
     FormContainer = require('../../shared/components/form.container'),
-	  Layout = require('../../shared/components/layout');
+    Layout = require('../../shared/components/layout');
 
 var sourceStore = require('../stores/source'),
     utils = require('../../shared/utils'),
-		actions = require('../actions');
+    actions = require('../actions');
 
 var SourceVitals = React.createClass({
   render : function () {
@@ -50,8 +50,8 @@ module.exports = React.createClass({
   },
 
   render : function () {
-  	return (
-  		<Layout>
+    return (
+      <Layout>
           <div className="source-vitals">
             <h3>Vitals for {this.state.source.name} </h3>
             <div className="mini-nav right">
@@ -59,7 +59,7 @@ module.exports = React.createClass({
             </div>
             <SourceVitals source={this.state.source} />
           </div>
-  		</Layout>
-  	);
+      </Layout>
+    );
   }
 });
