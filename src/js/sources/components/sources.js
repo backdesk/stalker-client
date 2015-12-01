@@ -1,56 +1,38 @@
 var React = require('react'),
     Reflux = require('reflux'),
-    Router = require('react-router'),
-    moment = require('moment');
+    Router = require('react-router');
 
-var sourcesStore = require('../stores/sources'),
-    actions = require('../actions');
+var Layout = require('../../shared/components/layout'),
+    SourceItem = require('./source.item'),
+    SourceList = require('./source.list');
 
-
-var SourceItem = React.createClass({
-  mixins : [Router.History],
-
-  handleClick : function (e) {
-    e.preventDefault();
-
-    this.history.pushState(null, '/sources/' + this.props.source._id);
-  },
-
-  render : function () {
-    var p = this.props.source;
-
-    return (
-      <li className="source-item">
-        <a href="#" onClick={this.handleClick}>{p.name} @ {p.company} - {moment(p.lastContact).fromNow()}</a>
-      </li>
-    );
-  }
-});
-
-var SourceList = React.createClass({
-  render : function () {
-    var sourceNodes =  this.props.sources.map(function (source) {
-      return <SourceItem key={source._id} source={source} />
-    });
-
-    return (
-      <ul>
-        {sourceNodes}
-      </ul>
-    );
-  }
-});
 
 module.exports = React.createClass({
-  mixins: [Reflux.connect(sourcesStore)],
+  resolveFilter : function () {
+    var p = this.props, params, filter = p.filter;
 
-  componentDidMount : function () {
-    actions.load(this.props.mode, this.props.filter);
+    console.log(p);
+    if(!filter) {
+      params = Object.keys(p.routeParams);
+
+      if(params.length) {
+        filter = params[0] + ':' + p.routeParams[params[0]];
+      }
+    }
+
+    return filter;
   },
 
   render : function () {
+    var filter = this.resolveFilter();
+
+    console.log(filter);
+
     return (
-      <SourceList sources={this.state.sources} />
+      <Layout>
+        <h3>Sources</h3>
+        <SourceList filter={filter} component={SourceItem} />
+      </Layout>
     );
   }
 });

@@ -9,6 +9,28 @@ var sourceStore = require('../stores/source'),
     utils = require('../../shared/utils'),
     actions = require('../actions');
 
+var SourceHeader = React.createClass({
+  mixins : [Router.History],
+
+  handleClick : function (e) {
+    e.preventDefault();
+
+    this.history.pushState(null, '/sources/company/' + this.props.source.company);
+  },
+
+  render : function () {
+    var source = this.props.source, node;
+
+    if(source.company) {
+      node = <h3>{source.name}  @ <a href="#" onClick={this.handleClick} className="by-company">{source.company}</a></h3>;
+    } else {
+      node = <h3>source.name</h3>;
+    }
+
+    return (node);
+  }
+})
+
 var SourceVitals = React.createClass({
   render : function () {
     var p = this.props.source;
@@ -50,14 +72,16 @@ module.exports = React.createClass({
   },
 
   render : function () {
+    var source = this.state.source;
+
     return (
       <Layout>
           <div className="source-vitals">
-            <h3>Vitals for {this.state.source.name} </h3>
+            <SourceHeader source={source} />
             <div className="mini-nav right">
               <a href="#" className="edit-link" onClick={this.handleEditClick}>Edit Details</a>
             </div>
-            <SourceVitals source={this.state.source} />
+            <SourceVitals source={source} />
           </div>
       </Layout>
     );

@@ -8,14 +8,7 @@ var Layout = require('../../shared/components/layout'),
 
 var utils = require('../../shared/utils');
 
-
 var LeadActionButton = React.createClass({
-  handleChange : function (e) {
-    var el = e.target;
-
-    console.log(utils.getInputValue(el));
-  },
-
   render : function () {
     return (
       <span className="lead-action">
@@ -31,11 +24,11 @@ var LeadItem = React.createClass({
   handleClick : function (e) {
     e.preventDefault();
 
-    this.history.pushState(null, '/leads/' + this.props.lead._id);
+    this.history.pushState(null, '/leads/' + this.props.item._id);
   },
 
   render : function () {
-    var lead = this.props.lead;
+    var lead = this.props.item;
 
     return (
       <div className="lead-card">
@@ -59,7 +52,7 @@ module.exports = React.createClass({
     return (
       <Layout>
         <h3>Leads</h3>
-        <LeadList item={LeadItem} />
+        <LeadList component={LeadItem} />
       </Layout>
     );
   }

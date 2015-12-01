@@ -1,7 +1,8 @@
 var React = require('react');
 
 var Layout = require('../../shared/components/layout'),
-    Sources = require('../../sources/components/sources'),
+    SourceList = require('../../sources/components/source.list'),
+    SourceItem = require('../../sources/components/source.item'),
     LeadList  = require('../../leads/components/lead.list'),
     LeadCard  = require('../../leads/components/lead.card'),
     Link = require('react-router').Link;
@@ -27,10 +28,10 @@ module.exports = React.createClass({
                 <Link to="/leads/create">Create</Link>
                 <Link to="/leads">View All</Link>
             </div>
-            <LeadList item={LeadCard} filter="status:pending" />
+            <LeadList component={LeadCard} filter="status:pending" />
           </Panel>
           <Panel title="Runners and Gunners">
-            <Sources mode="chase" />
+            <SourceList component={SourceItem} mode="chase" />
           </Panel>
         </div>
       </Layout>

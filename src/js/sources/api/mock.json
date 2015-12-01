@@ -38,7 +38,7 @@
     {
       "_id":"564c5c2f6e0eaa4328249794",
       "name":"Betty Jones",
-      "company":"Koffee",
+      "company":"Lumbrex",
       "type":"misc",
       "lastContact":"2014-11-08T01:54:11",
       "status":"chasing",
@@ -49,7 +49,7 @@
     {
       "_id":"564c5c2fcd3e87d420eab03c",
       "name":"Melinda Gallagher",
-      "company":"Magnina",
+      "company":"Lumbrex",
       "type":"misc",
       "lastContact":"2015-11-15T10:03:42",
       "status":"chasing",
@@ -60,7 +60,7 @@
     {
       "_id":"564c5c2f2545ae826daf9121",
       "name":"Pena Gillespie",
-      "company":"Emoltra",
+      "company":"Lumbrex",
       "type":"agent",
       "lastContact":"2015-11-13T09:08:49",
       "status":"chasing",
@@ -71,7 +71,7 @@
     {
       "_id":"564c5c2f0b249dea4f95f2b1",
       "name":"Garza Ellis",
-      "company":"Songlines",
+      "company":"Lumbrex",
       "type":"misc",
       "lastContact":"2015-11-09T09:15:50",
       "status":"queued",

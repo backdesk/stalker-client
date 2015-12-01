@@ -33,7 +33,7 @@ module.exports = React.createClass({
   handleClick : function (e) {
     e.preventDefault();
 
-    this.history.pushState(null, '/leads/' + this.props.lead._id);
+    this.history.pushState(null, '/leads/' + this.props.item._id);
   },
 
   handleDismiss : function (e) {
@@ -41,11 +41,11 @@ module.exports = React.createClass({
 
     this.setState({ status : 'junk' });
 
-    actions.dismiss(this.props.lead._id);
+    actions.dismiss(this.props.item._id);
   },
 
   render : function () {
-    var lead = this.props.lead;
+    var lead = this.props.item;
 
     return (
       <div className="lead-card">
@@ -53,7 +53,7 @@ module.exports = React.createClass({
           <a href="#" onClick={this.handleClick}>{lead.details}</a><span className="last-update">Last updated {moment(lead.lastUpdate).fromNow()}</span>
         </header>
         <section className="info">
-          <LeadSource source={this.props.lead.source} />
+          <LeadSource source={this.props.item.source} />
           <a href="#" onClick={this.handleDismiss} className="dismiss button-xsmall pure-button">Dismiss</a>
         </section>
       </div>

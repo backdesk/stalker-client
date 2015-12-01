@@ -2,34 +2,9 @@ var React = require('react'),
     Reflux = require('reflux'),
     Router = require('react-router');
 
-var leadsStore = require('../stores/leads');
-var actions = require('../actions');
-
-var LeadList = function (ListItem) {
-  return  React.createClass({
-    mixins : [Router.History],
-
-    handleCreate : function (e) {
-      e.preventDefault();
-
-      this.history.pushState(null, '/leads/create');
-    },
-
-    render : function () {
-      var node, leadNodes =  this.props.leads.map(function (lead) {
-        return (<ListItem key={lead._id} lead={lead} />)
-      });
-
-      if(!this.props.leads.length) {
-        node = (<div className="lead-list">Nothing yet.</div>);
-      } else {
-        node = (<div className="lead-list">{leadNodes}</div>);
-      }
-
-      return (node);
-    }
-  });
-};
+var BasicList = require('../../shared/components/list'),
+    leadsStore = require('../stores/leads'),
+    actions = require('../actions');
 
 module.exports = React.createClass({
   mixins : [Reflux.connectFilter(leadsStore, 'leads', function(data) {
@@ -46,19 +21,15 @@ module.exports = React.createClass({
     }
   })],
 
-  handleDismiss : function () {
-
-  },
-
   componentDidMount : function () {
     actions.load(this.props.filter);
   },
 
   render : function () {
-    var List = LeadList(this.props.item);
+    var List = BasicList(this.props.component);
 
     return (
-      <List leads={this.state.leads} />
+      <List keyField="_id" itemName="lead" items={this.state.leads} />
     );
   }
 });

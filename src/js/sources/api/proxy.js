@@ -97,10 +97,24 @@ module.exports = {
     if(filter) {
       filter = filter.split(':');
 
+      console.log(filter);
+
       if(filter[0] === 'status') {
         data = data.filter(function (source) {
           return source.status === filter[1];
         });
+      } else if (filter[0] === 'company') {
+        data = data.filter(function (source) {
+          return source.company === filter[1];
+        });
+      } else if (filter[0] === 'zombies') {
+        data = data.filter(function (source) {
+          var timeElapsed = moment().diff(moment(source.lastContact), 'seconds');
+
+          return timeElapsed > ABYSS_THRESHOLD;
+        });
+
+        console.log(data);
       }
     }
 
