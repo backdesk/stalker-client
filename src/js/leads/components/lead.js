@@ -177,6 +177,8 @@ module.exports = React.createClass({
   },
 
   render : function () {
+    console.log(this.props);
+
     return (
       <Layout>
         <FormContainer result={this.state.result} pending={this.state.pending}>

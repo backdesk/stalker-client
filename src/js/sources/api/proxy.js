@@ -89,6 +89,17 @@ module.exports = {
         });
 
         sortByLastContact(data);
+
+      } else if (mode === 'zombies' || mode === 'kicking') {
+        data = data.filter(function (source) {
+          var timeElapsed = moment().diff(moment(source.lastContact), 'seconds');
+
+          if(mode === 'kicking') {
+            return timeElapsed < ABYSS_THRESHOLD && source.status === 'waiting';
+          } else {
+            return timeElapsed > ABYSS_THRESHOLD && source.status === 'chasing';
+          }
+        });
       }
     } else {
       sortByName(data);
@@ -96,8 +107,6 @@ module.exports = {
 
     if(filter) {
       filter = filter.split(':');
-
-      console.log(filter);
 
       if(filter[0] === 'status') {
         data = data.filter(function (source) {
@@ -107,14 +116,6 @@ module.exports = {
         data = data.filter(function (source) {
           return source.company === filter[1];
         });
-      } else if (filter[0] === 'zombies') {
-        data = data.filter(function (source) {
-          var timeElapsed = moment().diff(moment(source.lastContact), 'seconds');
-
-          return timeElapsed > ABYSS_THRESHOLD;
-        });
-
-        console.log(data);
       }
     }
 

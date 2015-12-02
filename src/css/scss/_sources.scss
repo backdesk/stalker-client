@@ -19,6 +19,15 @@
     border-bottom-right-radius: 2px;
 }
 
+.source-mode {
+    float: right;
+
+    select {
+        margin-left: 10px;
+        padding: 5px;
+    }
+}
+
 .source-vitals {
     h3 {
         margin-top: 0;

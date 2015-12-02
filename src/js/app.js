@@ -28,7 +28,7 @@ ReactDom.render((
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard}/>
       <Route path="sources" component={Sources} />
-      <Route path="sources/zombies/" component={Sources} />
+      <Route path="sources/zombies" mode="zombies" component={Sources} />
       <Route path="sources/company/:company" component={Sources} />
       <Route path="sources/:id" component={Source} />
       <Route path="sources/edit/:id" component={SourceEditor} />

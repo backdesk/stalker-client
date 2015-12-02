@@ -14,6 +14,10 @@ module.exports = React.createClass({
     actions.load(this.props.mode, this.props.filter);
   },
 
+  componentWillReceiveProps : function (props) {
+    actions.load(props.mode, props.filter);
+  },
+
   render : function () {
     var List = BasicList(this.props.component);
 

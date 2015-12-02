@@ -4,7 +4,7 @@ module.exports = Reflux.createStore({
 	listenables : require('../actions'),
 
 	getInitialState : function () {
-		return { sources : [] }
+		return { sources : [], mode : null }
 	},
 
 	onLoadCompleted : function (sources) {
