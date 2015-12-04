@@ -9,7 +9,7 @@ var Layout = require('../../shared/components/layout'),
 
 var ModalMessages = {
   'chase'   : 'These sources have unresolved leads and have yet to return with feedback.',
-  'kicking' : 'These sources have unresolved leads and are waiting for a response.',
+  'kicking' : 'These sources have unresolved leads and are waiting for your response.',
   'zombies' : 'These sources have unresolved leads but have mysteriously vanished.'
 };
 

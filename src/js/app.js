@@ -33,7 +33,7 @@ ReactDom.render((
       <Route path="sources/edit/:id" component={SourceEditor} />
 
       <Route path="leads" component={Leads} />
-      <Route path="leads/create" component={Lead} />
+      <Route path="leads/create" component={LeadEditor} />
       <Route path="leads/:id" component={Lead} />
       <Route path="leads/edit/:id" component={LeadEditor} />
 

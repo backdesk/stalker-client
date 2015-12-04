@@ -20,10 +20,10 @@ module.exports = Reflux.createStore({
   logActivitySuccess : function (activity) {
     this.activity.unshift(activity);
 
-    this.trigger({ activity : this.activity });
+    this.trigger({ activity : this.activity, result : 'success' });
   },
 
   logActivityFailed : function () {
-    console.log(arguments);
+    this.trigger({ activity : this.activity, result : 'failure' });
   }
 });

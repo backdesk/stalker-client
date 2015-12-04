@@ -17,27 +17,45 @@ var RANDOM_INTROS = [
   'A tasty morsel',
   'A joyful gift',
   'Something to savour',
-  'A ponderous pearl',
+  'A offering',
   'An absolute cracker',
   'Feast your eyes on this beauty'
 ];
 
 var LeadSource = React.createClass({
+  mixins : [Router.History],
+
+  handleClick : function (e) {
+    e.preventDefault();
+
+    this.history.pushState(null, '/sources/' + this.props.source._id);
+  },
+
   render : function () {
     var intro = RANDOM_INTROS[Math.floor(Math.random() * RANDOM_INTROS.length)];
 
     if(!this.props.source) return null;
 
     return (
-      <p className="lead-source">{intro} from <a href="#">{this.props.source.name}</a></p>
+      <p className="lead-source">{intro} from <a href="#" onClick={this.handleClick}>{this.props.source.name}</a></p>
     );
   }
 });
 
 var LeadActivityForm = React.createClass({
+  mixins: [Reflux.listenTo(activityStore, 'onActivityResult')],
+
   getInitialState : function () {
     return {
       comment : ''
+    }
+  },
+
+  onActivityResult : function (data) {
+    if (data.result) {
+      if (data.result === 'success') {
+        this.replaceState(this.getInitialState());
+      }
     }
   },
 
@@ -137,7 +155,7 @@ module.exports = React.createClass({
         </div>
         <section>
           <LeadSource source={lead.source} />
-          <p>{lead.description}</p>
+          <p className="lead-desc">{lead.description}</p>
         </section>
         <section className="lead-activity-form">
           <LeadActivityForm leadId={lead._id} />

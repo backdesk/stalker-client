@@ -43,6 +43,16 @@
     margin: 0;
 }
 
+.lead-desc {
+    max-height: 180px;
+    overflow: auto;
+    white-space: pre-line;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 0.95rem;
+    font-family: monospace;
+}
+
 .lead-editor {
     .lead-details {
         width: 100%;
@@ -74,6 +84,8 @@
 }
 
 .lead-activity {
+    margin-bottom: 20px;
+
     .summary {
         font-size: 1rem;
         font-weight: 300;
