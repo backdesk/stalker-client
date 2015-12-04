@@ -7,10 +7,12 @@ module.exports = Reflux.createStore({
 
   init : function () {
     this.listenTo(leadStore, this.onActivityChanged);
+
+    this.activity = [];
   },
 
   onActivityChanged : function (data) {
-    this.activity = data.lead.activity;
+    this.activity = data.lead.activity || [];
 
     this.trigger({ activity : this.activity });
   },

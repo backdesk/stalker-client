@@ -117,6 +117,7 @@ module.exports = {
         }
 
         item.activity.unshift(activity);
+        item.lastUpdate = moment().format();
       }
 
       return item;

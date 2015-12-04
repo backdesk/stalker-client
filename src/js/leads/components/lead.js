@@ -30,7 +30,7 @@ var LeadActivityForm = React.createClass({
     e.preventDefault();
 
     actions.logActivity(this.props.leadId, {
-      comment : 'Hello there.'
+      comment : this.state.comment
     });
   },
 
