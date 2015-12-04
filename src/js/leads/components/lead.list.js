@@ -29,7 +29,7 @@ module.exports = React.createClass({
     var List = BasicList(this.props.component);
 
     return (
-      <List keyField="_id" itemName="lead" items={this.state.leads} />
+      <List keyField="_id" itemName="lead" items={this.state.leads} empty={this.props.empty} />
     );
   }
 });

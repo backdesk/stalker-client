@@ -8,9 +8,9 @@ var Layout = require('../../shared/components/layout'),
     SourceList = require('./source.list');
 
 var ModalMessages = {
-  'chase'   : 'Sources with outstanding leads who have yet to return with feedback',
-  'kicking' : 'Sources with outstanding leads who are waiting for my response.',
-  'zombies' : 'Sources with outstanding leads but have not bothered to get back in touch.'
+  'chase'   : 'These sources have unresolved leads and have yet to return with feedback.',
+  'kicking' : 'These sources have unresolved leads and are waiting for a response.',
+  'zombies' : 'These sources have unresolved leads but have mysteriously vanished.'
 };
 
 var SourceMessage = React.createClass({

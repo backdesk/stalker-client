@@ -9,7 +9,7 @@ module.exports = Reflux.createStore({
         _id : null,
         details : '',
         description : '',
-        comments : []
+        activity : []
       },
       message : null,
       pending : true

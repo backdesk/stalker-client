@@ -1,4 +1,5 @@
 var store = require('../../shared/store.local')(),
+    moment = require('moment'),
     utils = require('../../shared/utils');
 
 store.init('leads', require('./mock.json'));
@@ -99,6 +100,32 @@ module.exports = {
           message : 'This lead just won\'t take no for an answer'
         });
       }
+    });
+  },
+
+  logActivity : function (id, activity) {
+    var data = store.read();
+
+    activity.op = 'manual';
+    activity._id = utils.genObjId();
+    activity.created = moment().format();
+
+    data.leads = data.leads.map(function (item) {
+      if(item._id === id) {
+        if(!item.activity) {
+          item.activity = [];
+        }
+
+        item.activity.unshift(activity);
+      }
+
+      return item;
+    });
+
+    store.save(data);
+
+    return new Promise(function(resolve, reject) {
+      resolve(activity);
     });
   }
 };

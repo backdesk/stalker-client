@@ -1,12 +1,9 @@
 var React = require('react'),
     Reflux = require('reflux'),
     Router = require('react-router'),
-    update = require('react-addons-update'),
-    FormContainer = require('../../shared/components/form.container'),
     Layout = require('../../shared/components/layout');
 
 var sourceStore = require('../stores/source'),
-    utils = require('../../shared/utils'),
     actions = require('../actions');
 
 var SourceHeader = React.createClass({
@@ -14,8 +11,6 @@ var SourceHeader = React.createClass({
 
   handleClick : function (e) {
     e.preventDefault();
-
-    this.history.pushState(null, '/sources/company/' + this.props.source.company);
   },
 
   render : function () {

@@ -28,10 +28,10 @@ module.exports = React.createClass({
                 <Link to="/leads/create">Create</Link>
                 <Link to="/leads">View All</Link>
             </div>
-            <LeadList component={LeadCard} filter="status:pending" />
+            <LeadList component={LeadCard} filter="status:pending" empty="Moar donutz pls." />
           </Panel>
           <Panel title="Runners and Gunners">
-            <SourceList component={SourceItem} mode="chase" />
+            <SourceList component={SourceItem} mode="chase" empty="Looks like they got away."/>
           </Panel>
         </div>
       </Layout>
