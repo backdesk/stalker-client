@@ -10,6 +10,29 @@ var leadStore = require('../stores/lead'),
     utils = require('../../shared/utils'),
     actions = require('../actions');
 
+var RANDOM_INTROS = [
+  'A delectable bite',
+  'A real treat',
+  'A right meaty one',
+  'A tasty morsel',
+  'A joyful gift',
+  'Something to savour',
+  'A ponderous pearl',
+  'An absolute cracker',
+  'Feast your eyes on this beauty'
+];
+
+var LeadSource = React.createClass({
+  render : function () {
+    var intro = RANDOM_INTROS[Math.floor(Math.random() * RANDOM_INTROS.length)];
+
+    if(!this.props.source) return null;
+
+    return (
+      <p className="lead-source">{intro} from <a href="#">{this.props.source.name}</a></p>
+    );
+  }
+});
 
 var LeadActivityForm = React.createClass({
   getInitialState : function () {
@@ -113,7 +136,7 @@ module.exports = React.createClass({
           </div>
         </div>
         <section>
-          <p>Trent Lamebars @ Bogus</p>
+          <LeadSource source={lead.source} />
           <p>{lead.description}</p>
         </section>
         <section className="lead-activity-form">

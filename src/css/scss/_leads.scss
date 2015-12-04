@@ -39,6 +39,10 @@
     float: right;
 }
 
+.lead-source {
+    margin: 0;
+}
+
 .lead-editor {
     .lead-details {
         width: 100%;
@@ -89,6 +93,7 @@
         border: 1px solid #ccc;
         border-top: none;
         position: relative;
+        padding-right: 80px;
 
         .tag {
             position: absolute;
