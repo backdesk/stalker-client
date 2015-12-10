@@ -1,5 +1,5 @@
 var Reflux = require('reflux');
-var Proxy = require('./api/proxy');
+var Proxy = require('./api/proxy.rest');
 
 
 var Actions = Reflux.createActions({
@@ -12,12 +12,12 @@ var Actions = Reflux.createActions({
 });
 
 Actions.load.listen(function(filter) {
-  Proxy.get(filter)
+  Proxy.find(filter)
     .then(this.completed, this.failed);
 });
 
 Actions.loadLead.listen(function(id) {
-  Proxy.getById(id)
+  Proxy.get(id)
     .then(this.completed, this.failed);
 });
 

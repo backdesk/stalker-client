@@ -5,7 +5,7 @@ var store = require('../../shared/store.local')(),
 store.init('leads', require('./mock.json'));
 
 module.exports = {
-  getById : function (id) {
+  get : function (id) {
     var data = store.find(id, 'leads');
 
     return new Promise(function(resolve, reject) {
@@ -19,7 +19,7 @@ module.exports = {
     });
   },
 
-  get : function (filter) {
+  find : function (filter) {
     var data = store.read().leads;
 
     if(filter) {

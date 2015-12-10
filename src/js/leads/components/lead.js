@@ -78,7 +78,7 @@ var LeadActivityForm = React.createClass({
   render : function () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="comment">Comment:</label>
+        <label htmlFor="comment">Comment/Activity:</label>
         <textarea id="comment" name="comment" value={this.state.comment} onChange={this.handleChange} className="activity-comment" />
         <input type="submit" value="Log Activity" className="pure-button pure-button-primary button-xsmall right" />
       </form>
