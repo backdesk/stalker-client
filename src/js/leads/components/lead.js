@@ -1,13 +1,14 @@
 var React = require('react'),
     Reflux = require('reflux'),
     Router = require('react-router'),
+    update = require('react-addons-update'),
     moment = require('moment'),
     Layout = require('../../shared/components/layout');
 
 var leadStore = require('../stores/lead'),
     activityStore = require('../stores/lead.activity'),
     FormContainer = require('../../shared/components/form.container'),
-    utils = require('../../shared/utils'),
+        utils = require('../../shared/utils'),
     actions = require('../actions');
 
 var RANDOM_INTROS = [
@@ -95,15 +96,21 @@ var LeadActivityEntry = React.createClass({
         <div className="tag">{entry.op}</div>
         <p className="comment">{entry.comment}</p>
         <div>
-          <p className="meta">Created: {moment(entry.created).fromNow()}</p>
+          <p className="meta">Created: {moment(entry.createdAt).fromNow()}</p>
         </div>
       </div>
     );
   }
 });
 
-var LeadActivity = React.createClass({
+var LeadActivityList = React.createClass({
   mixins: [Reflux.connect(activityStore)],
+
+  handleShowMore : function (e) {
+    e.preventDefault();
+
+    actions.getActivity(this.props.leadId, this.state.chunk || 5 );
+  },
 
   render : function () {
     var activity = this.state.activity, nodes;
@@ -124,6 +131,9 @@ var LeadActivity = React.createClass({
         <ul>
           {nodes}
         </ul>
+        <div className="leads-activity-more">
+          <a href="#" onClick={this.handleShowMore}>Show More...</a>
+        </div>
       </div>
     );
   }
@@ -161,7 +171,7 @@ module.exports = React.createClass({
           <LeadActivityForm leadId={lead._id} />
         </section>
         <section>
-          <LeadActivity status={lead.status} />
+          <LeadActivityList leadId={lead._id} status={lead.status} count={lead.activityCount} />
         </section>
       </Layout>
     );

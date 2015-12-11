@@ -103,6 +103,14 @@ module.exports = {
     });
   },
 
+  getActivity : function (id) {
+    var activity = [];
+
+    return new Promise(function(resolve, reject) {
+      resolve(activity);
+    });
+  },
+
   logActivity : function (id, activity) {
     var data = store.read();
 

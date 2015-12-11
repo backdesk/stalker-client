@@ -1,0 +1,247 @@
+[33mcommit 0f5b288354bc768909d78f8a07fabde524be3399[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Thu Dec 10 16:19:37 2015 +0000
+
+    REST integration
+    
+    Growing to appreciate various aspects of isomorphic apps. New REST proxy
+    code looks a LOT like the service logic.
+
+[33mcommit 0166d23f8ff0823b760cc814da92a3ac83e29c87[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Dec 4 16:55:35 2015 +0000
+
+    Styling for lead messages (mostly email)
+
+[33mcommit b0d82c73269f8cf0492d04bf8b3969341860aa49[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Dec 4 16:00:48 2015 +0000
+
+    Lead source banter
+
+[33mcommit 7f5bb113209671da9e02cc43ec2265a60ce43216[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Dec 4 14:20:57 2015 +0000
+
+    Use comment from state to populate comment. Update lastContact to mimic rest service
+
+[33mcommit 67293c34b8c8609899a2f2823cd1766cc5307a38[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Dec 4 14:02:17 2015 +0000
+
+    Added aggregate store for activity log
+
+[33mcommit 977ff962a0789b6f158f7769288ecefc936e0348[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Dec 2 14:23:50 2015 +0000
+
+    Nested filter component
+
+[33mcommit 985e11167a2b5612a15d09b1b40f00922ac533e8[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Tue Dec 1 16:54:33 2015 +0000
+
+    Working around filtering solution and generic list
+
+[33mcommit d4e5484f58e6316da9cfae7d6a57ac3e800415ec[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 30 16:33:55 2015 +0000
+
+    Sublime reverted back to tabs.
+
+[33mcommit d1950100d39277179f972ed4d7db62590c6fc88e[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 30 16:12:46 2015 +0000
+
+    Moved source to separate editor route
+
+[33mcommit 39b434963073d17d65c5961ad50127edb3ba7d64[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Thu Nov 26 16:53:58 2015 +0000
+
+    Critical stats (hard coded)
+
+[33mcommit 5880aa58e5b129b43d38225d9b14cb9c0c86726b[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Thu Nov 26 14:59:51 2015 +0000
+
+    Source editor and mocks
+
+[33mcommit 40c46796f885d30582a283b3d33d937b806b3879[m
+Merge: 1c9c2d1 ab49d49
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Thu Nov 26 13:48:21 2015 +0000
+
+    Merge branch 'master' of https://github.com/backdesk/stalker-client
+
+[33mcommit 1c9c2d11e6450248ce999a3f38f260175923d958[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Thu Nov 26 13:47:50 2015 +0000
+
+    Change of heart. Agents -> Sources
+
+[33mcommit ab49d497b4e4a9edff59ad9032dde7ed1f1d5650[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 25 16:38:53 2015 +0000
+
+    Corrected bad formatting.
+
+[33mcommit 29866adc3e7629177d2b3c004c75212b3219e114[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 25 16:31:54 2015 +0000
+
+    leads full circle navigation and styling
+
+[33mcommit 6420f5b39fa9511373a6e94065676eaaff3322b2[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 25 15:38:36 2015 +0000
+
+    added in new components
+
+[33mcommit 1ad10fea32307b0602df395d0ec06a73b01d107f[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 25 15:30:53 2015 +0000
+
+    Shuffled around list components for leads
+
+[33mcommit 1533e2d0345b3bda9a6d7930d500cb6649fd3750[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 25 13:13:43 2015 +0000
+
+    Patched messaging into state for update/create. Not sure this was such a good idea
+
+[33mcommit ef8b88fec2210941c8069fd38345dcc039ff1994[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 25 12:16:40 2015 +0000
+
+    Ropey type ahead component for searching agents
+
+[33mcommit 2402c47602964346a809899e7b12c058d00b769b[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Tue Nov 24 12:35:53 2015 +0000
+
+    Fixed up using immutable helper
+
+[33mcommit 0a0b15838ded6d7a556f4616b08685662489df25[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 23 16:26:01 2015 +0000
+
+    Tidying up and formatting
+
+[33mcommit 330337d67f189eebd91d7cedc2997cced539a198[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 23 16:22:31 2015 +0000
+
+    Last minute style musings
+
+[33mcommit 09f37812e51360f261f6d2f41eb4161920e2ca19[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 23 16:08:41 2015 +0000
+
+    Lead/Origin creation and local storage
+
+[33mcommit ddaed4fb851ff1730cdb9be8fa92ab9b3c1e1cf8[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Nov 20 16:43:35 2015 +0000
+
+    Formatting and indentation
+
+[33mcommit 1531b6a87b398f1be9e61317f2d582395b3bf16b[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Nov 20 16:38:20 2015 +0000
+
+    Form validation within action.
+
+[33mcommit bbc2e172cea511253023994e716cb44bff569def[m
+Merge: 827aede 44c0b5d
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Nov 20 16:18:20 2015 +0000
+
+    Merge branch 'master' of https://github.com/backdesk/stalker-client
+
+[33mcommit 827aeded17835d21dfde279fd829a7cb84365eaf[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Fri Nov 20 16:09:56 2015 +0000
+
+    First attempt at form validation
+
+[33mcommit 44c0b5d131064b63bbca21e885d6a9eac7534bcb[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 18 16:19:23 2015 +0000
+
+    Delete readme.md
+
+[33mcommit b7658a4e2f685c5406368d00d2b0b0522ee2c4fe[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 18 16:05:00 2015 +0000
+
+    added some dummy menu options to header
+
+[33mcommit d9985d6a859b18a8d48dd30dffe4120b6725a39c[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 18 15:56:23 2015 +0000
+
+    Added in pure.io styles and local filtering
+
+[33mcommit 88e2393883711292cc9e3bb3249f0e00994e5c18[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Tue Nov 17 17:12:55 2015 +0000
+
+    layout, gulp/scss and leads component
+
+[33mcommit 2dbd2afb03d335ff0f57372cf6b6f9d6981a767b[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 16 15:59:50 2015 +0000
+
+    fixed inverted boolean (left over from testing)
+
+[33mcommit bfe9d340eb99711da53e95886e8feafd1a360ff5[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Mon Nov 16 15:50:43 2015 +0000
+
+    Working on state transitions via router
+
+[33mcommit 680cf771c4e285bbde97b825407473c2f001a171[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Thu Nov 12 16:22:32 2015 +0000
+
+    Re-shuffling dashboard component
+
+[33mcommit 93673a5e90ecc8c542faf9c7d0a31fe15acb2840[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 11 15:36:56 2015 +0000
+
+    Started work on leads with dummy data
+
+[33mcommit 782e6d1474b4b813c182c943dca0550700c81976[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 11 12:22:01 2015 +0000
+
+    Sorted out broken indentation.
+
+[33mcommit 501dea487cc4556245f4285f57dda4c206e2b4f6[m
+Merge: 62518a0 edb7b3d
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 11 12:20:50 2015 +0000
+
+    fixed minor conflict
+
+[33mcommit 62518a0a3b58d469f2ec31a769e80f0adc53f0b2[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 11 12:19:25 2015 +0000
+
+    Sorted out broken indentation.
+
+[33mcommit edb7b3d5b108176d0ceca9ef1cabebab698529e4[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Wed Nov 11 12:09:04 2015 +0000
+
+    Update app.js
+    
+    Fixed formatting.
+
+[33mcommit c9f77f2fc407474e83538430ab2f2f95811e18e6[m
+Author: James Gardner <crungmungus@gmail.com>
+Date:   Tue Nov 10 16:35:20 2015 +0000
+
+    Started work on client

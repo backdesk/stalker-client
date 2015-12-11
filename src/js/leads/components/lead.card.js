@@ -15,14 +15,14 @@ var LeadSource = React.createClass({
   },
 
   render : function () {
-    var p = this.props.source;
+    var source = this.props.source;
 
-    if(p.type === 'unknown') {
+    if(source.type === 'unknown') {
       return <small className="source">Unknown</small>
     }
 
     return (
-      <small className="source">From <a href="#" onClick={this.handleClick}>{p.name} @ {p.company}</a> ({p.type}) via {p.channel}</small>
+      <small className="source">From <a href="#" onClick={this.handleClick}>{source.name} @ {source.company}</a> ({source.type}) via {this.props.channel}</small>
     );
   }
 });
@@ -46,14 +46,15 @@ module.exports = React.createClass({
 
   render : function () {
     var lead = this.props.item;
+    console.log(lead);
 
     return (
       <div className="lead-card">
         <header className="header">
-          <a href="#" onClick={this.handleClick}>{lead.details}</a><span className="last-update">Last updated {moment(lead.lastUpdate).fromNow()}</span>
+          <a href="#" onClick={this.handleClick}>{lead.details}</a><span className="last-update">Last updated {moment(lead.updatedAt).fromNow()}</span>
         </header>
         <section className="info">
-          <LeadSource source={this.props.item.source} />
+          <LeadSource source={lead.source} channel={lead.channel} />
           <a href="#" onClick={this.handleDismiss} className="dismiss button-xsmall pure-button">Dismiss</a>
         </section>
       </div>

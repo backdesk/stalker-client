@@ -36,6 +36,19 @@ module.exports = {
     });
   },
 
+  getActivity : function (id, skip) {
+    console.log(skip);
+
+    return new Promise(function(resolve, reject) {
+      request
+        .get(url + id + '/activity')
+        .query({ skip : skip })
+        .end(function (err, res) {
+          err ? reject(err) : resolve(res.body);
+        });
+    });
+  },
+
   update : function (body) {
     return new Promise(function(resolve, reject) {
       request

@@ -1,4 +1,5 @@
-var Reflux = require('reflux');
+var Reflux = require('reflux'),
+    _ = require('lodash');
 
 var leadStore = require('./lead');
 
@@ -15,6 +16,12 @@ module.exports = Reflux.createStore({
     this.activity = data.lead.activity || [];
 
     this.trigger({ activity : this.activity });
+  },
+
+  getActivitySuccess : function (activity) {
+    this.activity = this.activity.concat(activity);
+
+    this.trigger({ activity : this.activity, chunk : this.activity.length });
   },
 
   logActivitySuccess : function (activity) {
