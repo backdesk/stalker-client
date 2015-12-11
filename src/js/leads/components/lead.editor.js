@@ -44,7 +44,7 @@ var LeadForm = React.createClass({
   handleChange : function (e) {
     var state = {}, el = e.target, name = el.getAttribute('name');
 
-    if(name === 'name' || name === 'channel') {
+    if(name === 'name') {
       state.source = {
         [name] : { $set : utils.getInputValue(el) }
       };
@@ -94,7 +94,7 @@ var LeadForm = React.createClass({
           <SourceFinder name={p.source.name} onSelect={this.handleSourceChange} />
 
           <label htmlFor="channel">Channel:</label>
-          <select id="channel" name="channel" value={p.source.channel} onChange={this.handleChange}>
+          <select id="channel" name="channel" value={p.channel} onChange={this.handleChange}>
             <option value="email">Email</option>
             <option value="web">Web</option>
             <option value="phone">Phone</option>
