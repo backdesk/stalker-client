@@ -11,11 +11,11 @@ module.exports = React.createClass({
   mixins : [Reflux.connect(sourcesStore)],
 
   componentDidMount : function () {
-    actions.load(this.props.mode, this.props.filter);
+    actions.find({ mode: this.props.mode, filter : this.props.filter});
   },
 
   componentWillReceiveProps : function (props) {
-    actions.load(props.mode, props.filter);
+    actions.find({ mode: props.mode, filter : props.filter});
   },
 
   render : function () {

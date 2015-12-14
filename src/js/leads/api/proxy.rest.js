@@ -13,10 +13,19 @@ module.exports = {
     });
   },
 
-  find : function () {
+  find : function (filter) {
+    var query = {};
+
+    if(filter) {
+      filter = filter.split(':');
+
+      query[filter[0]] = filter[1];
+    }
+
     return new Promise(function(resolve, reject) {
       request
         .get(url)
+        .query(query)
         .end(function (err, res) {
           err ? reject(err) : resolve(res.body.leads);
         });
@@ -37,8 +46,6 @@ module.exports = {
   },
 
   getActivity : function (id, skip) {
-    console.log(skip);
-
     return new Promise(function(resolve, reject) {
       request
         .get(url + id + '/activity')
@@ -49,10 +56,21 @@ module.exports = {
     });
   },
 
+  dismiss : function (id) {
+    return new Promise(function(resolve, reject) {
+      request
+        .put(url + 'dismiss')
+        .send({ id : id })
+        .end(function (err, res) {
+          err ? reject(err) : resolve(id);
+        });
+    });
+  },
+
   update : function (body) {
     return new Promise(function(resolve, reject) {
       request
-        .put(url + body._id )
+        .put(url + body._id)
         .send(body)
         .end(function (err, res) {
           err ? reject(err) : resolve(res.body);

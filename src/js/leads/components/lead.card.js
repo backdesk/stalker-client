@@ -46,7 +46,6 @@ module.exports = React.createClass({
 
   render : function () {
     var lead = this.props.item;
-    console.log(lead);
 
     return (
       <div className="lead-card">

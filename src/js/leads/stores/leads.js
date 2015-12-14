@@ -1,11 +1,8 @@
-var Reflux = require('reflux');
+var Reflux = require('reflux'),
+    _ = require('lodash');
 
 module.exports = Reflux.createStore({
   listenables : require('../actions'),
-
-  find : function () {
-    return [].find.apply(this.leads, arguments);
-  },
 
   getInitialState : function () {
     return { leads : [] }
@@ -21,13 +18,13 @@ module.exports = Reflux.createStore({
   },
 
   onDismissCompleted : function (id) {
-    var lead = this.find(function (lead) {
-      return lead._id === id;
-    });
+    this.leads = this.leads.map(function (lead) {
+      if(lead._id === id) {
+        lead.status = 'junk';
+      }
 
-    if(lead) {
-      lead.status = 'junk';
-    }
+      return lead;
+    });
 
     this.trigger({ leads : this.leads });
   },

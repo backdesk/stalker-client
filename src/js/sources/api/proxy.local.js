@@ -49,7 +49,7 @@ var sortByLastContact = function (data) {
 store.init('sources', require('./mock.json'));
 
 module.exports = {
-  getById : function (id) {
+  get : function (id) {
     var data = store.find(id, 'sources');
 
     return new Promise(function(resolve, reject) {

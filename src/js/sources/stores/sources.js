@@ -7,10 +7,6 @@ module.exports = Reflux.createStore({
 		return { sources : [], mode : null }
 	},
 
-	onLoadCompleted : function (sources) {
-		this.trigger({ sources : sources });
-	},
-
 	onFindCompleted : function (sources) {
 		this.trigger({ sources : sources });
 	}

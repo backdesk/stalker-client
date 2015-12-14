@@ -12,7 +12,10 @@ module.exports = Reflux.createStore({
         type : '',
         lastContact : null,
         status : null,
-        notes : ''
+        notes : '',
+        scratches : 0,
+        tickles : 0,
+        strikes : 0
       },
       message : null,
       pending : true
@@ -20,14 +23,24 @@ module.exports = Reflux.createStore({
   },
 
   onLoadSourceCompleted : function (source) {
-    this.trigger({ source : source, pending : false });
+    this.source = source;
+
+    this.trigger({ source : this.source, pending : false });
   },
 
   onUpdateSuccess : function (source) {
-    this.trigger({ source : source, errors : null, result: 'success', pending : false });
+    this.source = source;
+
+    this.trigger({ source : this.source, errors : null, result: 'success', pending : false });
   },
 
   onUpdateFailed : function (source, errors) {
     this.trigger({ source : source, errors : errors, result: 'failed', pending : false });
+  },
+
+  onConditionSuccess : function (type) {
+    this.source[type]++;
+
+    this.trigger({ source : this.source });
   }
 });

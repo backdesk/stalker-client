@@ -1,20 +1,16 @@
 var Reflux = require('reflux');
-var Proxy = require('./api/proxy');
+var Proxy = require('./api/proxy.rest');
 
 var Actions = Reflux.createActions({
   'load' : { children : ['completed', 'failed'] },
   'find' : { children : ['completed', 'failed'] },
   'update' : { children : ['success', 'failed'] },
+  'condition' : { children : ['success', 'failed'] },
   'loadSource' : { children : ['completed', 'failed'] }
 });
 
-Actions.load.listen(function(mode, filter) {
-  Proxy.get(mode, filter)
-    .then(this.completed, this.failed);
-});
-
-Actions.find.listen(function(term) {
-  Proxy.find(term)
+Actions.find.listen(function(params) {
+  Proxy.find(params)
     .then(this.completed, this.failed);
 });
 
@@ -30,9 +26,13 @@ Actions.update.listen(function(data) {
 });
 
 Actions.loadSource.listen(function(id) {
-  Proxy.getById(id)
+  Proxy.get(id)
     .then(this.completed, this.failed);
 });
 
+Actions.condition.listen(function(id, type) {
+  Proxy.condition(id, type)
+    .then(this.success, this.failed);
+});
 
 module.exports = Actions;
