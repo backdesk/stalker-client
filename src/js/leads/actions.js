@@ -9,7 +9,8 @@ var Actions = Reflux.createActions({
   'update' : { children : ['success', 'failed'] },
   'create' : { children : ['success', 'failed'] },
   'logActivity' : { children : ['success', 'failed'] },
-  'getActivity' : { children : ['success', 'failed'] }
+  'getActivity' : { children : ['success', 'failed'] },
+  'findTags' : { children : ['success', 'failed'] }
 });
 
 Actions.load.listen(function(filter) {
@@ -67,6 +68,11 @@ Actions.logActivity.listen(function(id, data) {
 
 Actions.getActivity.listen(function(id, skip) {
   Proxy.getActivity(id, skip)
+    .then(this.success, this.failed);
+});
+
+Actions.findTags.listen(function(name) {
+  Proxy.findTags(name)
     .then(this.success, this.failed);
 });
 

@@ -64,8 +64,8 @@ module.exports = React.createClass({
     this.resetResults();
   },
 
-  handleChange : function (e) {
-    var el = e.target, term = utils.getInputValue(el);
+  handleKeyPress : function (e) {
+    var el = e.target, term = el.value().trim();
 
     if(term && term.trim().length >= TERM_THRESHOLD) {
       actions.find(term);
@@ -80,7 +80,7 @@ module.exports = React.createClass({
     return (
       <div>
         <ResultList results={this.state.sources} onSelect={this.handleSelect} />
-        <input value={this.state.name} id="name" name="name" onChange={this.handleChange} />
+        <input value={this.state.name} id="name" name="name" onKeyPress={this.handleKeyPress} />
       </div>
     );
   }

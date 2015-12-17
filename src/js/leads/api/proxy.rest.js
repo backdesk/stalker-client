@@ -56,6 +56,19 @@ module.exports = {
     });
   },
 
+  findTags : function (name) {
+    var url = 'http://localhost:3333/tags';
+
+    return new Promise(function(resolve, reject) {
+      request
+        .get(url)
+        .query({ name : name })
+        .end(function (err, res) {
+          err ? reject(err) : resolve(res.body);
+        });
+    });
+  },
+
   dismiss : function (id) {
     return new Promise(function(resolve, reject) {
       request

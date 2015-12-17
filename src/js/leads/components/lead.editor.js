@@ -4,6 +4,7 @@ var React = require('react'),
     classNames = require('classnames'),
     Layout = require('../../shared/components/layout'),
     SourceFinder = require('../../sources/components/source.finder'),
+    TagEditor = require('./lead.tags'),
     FormError = require('../../shared/components/form.error'),
     FormContainer = require('../../shared/components/form.container');
 
@@ -23,7 +24,8 @@ var LeadForm = React.createClass({
           channel : '',
           company : '',
           _id : null
-        }
+        },
+        tags : []
       },
       result : null
     }
@@ -68,7 +70,7 @@ var LeadForm = React.createClass({
   },
 
   render : function () {
-    var p = this.state.lead;
+    var lead = this.state.lead;
 
     return (
       <form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
@@ -78,23 +80,25 @@ var LeadForm = React.createClass({
           <FormError errors={this.props.errors} />
 
           <label htmlFor="details">Details: </label>
-          <input className="lead-details" id="details" name="details" value={p.details} onChange={this.handleChange} />
+          <input className="lead-details" id="details" name="details" value={lead.details} onChange={this.handleChange} />
 
           <label htmlFor="description">Description: </label>
-          <textarea id="description" name="description" value={p.description} onChange={this.handleChange} />
+          <textarea id="description" name="description" value={lead.description} onChange={this.handleChange} />
+
+          <TagEditor tags={lead.tags} />
 
           <label htmlFor="status">Status:</label>
-          <select id="status" name="status" className="lead-status" value={p.status} onChange={this.handleChange}>
+          <select id="status" name="status" className="lead-status" value={lead.status} onChange={this.handleChange}>
             <option value="junk">Junk</option>
             <option value="pending">Pending</option>
             <option value="applied">Applied</option>
           </select>
 
           <label htmlFor="name">Source: </label>
-          <SourceFinder name={p.source.name} onSelect={this.handleSourceChange} />
+          <SourceFinder name={lead.source.name} onSelect={this.handleSourceChange} />
 
           <label htmlFor="channel">Channel:</label>
-          <select id="channel" name="channel" value={p.channel} onChange={this.handleChange}>
+          <select id="channel" name="channel" value={lead.channel} onChange={this.handleChange}>
             <option value="email">Email</option>
             <option value="web">Web</option>
             <option value="phone">Phone</option>

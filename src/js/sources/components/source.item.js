@@ -17,7 +17,7 @@ module.exports = React.createClass({
 
     return (
       <li className="source-item">
-        <a href="#" onClick={this.handleClick}>{p.name} @ {p.company} - {moment(p.lastContact).fromNow()}</a>
+        <a href="#" onClick={this.handleClick}>{p.name} @ {p.company} - {moment(p.lastContactAt).fromNow()}</a>
       </li>
     );
   }
