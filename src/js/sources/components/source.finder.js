@@ -64,23 +64,23 @@ module.exports = React.createClass({
     this.resetResults();
   },
 
-  handleKeyPress : function (e) {
-    var el = e.target, term = el.value().trim();
+  handleChange : function (e) {
+    var el = e.currentTarget, name = el.value;
 
-    if(term && term.trim().length >= TERM_THRESHOLD) {
-      actions.find(term);
+    if(name && name.length >= TERM_THRESHOLD) {
+      actions.find({ name : name });
   	} else {
       this.resetResults();
     }
 
-    this.setState(update(this.state, { name : { $set : term } }));
+    this.setState(update(this.state, { name : { $set : name } }));
   },
 
   render : function () {
     return (
       <div>
         <ResultList results={this.state.sources} onSelect={this.handleSelect} />
-        <input value={this.state.name} id="name" name="name" onKeyPress={this.handleKeyPress} />
+        <input value={this.state.name} autoComplete="off" id="name" name="name" onChange={this.handleChange} />
       </div>
     );
   }

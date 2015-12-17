@@ -24,6 +24,10 @@ module.exports = {
       query[filter[0]] = filter[1];
     }
 
+    if(params.name) {
+      query.name = params.name;
+    }
+
     if(params.mode) {
       if(params.mode === 'chase') {
         _.extend(query, { status : 'chasing', threshold : 'above' });
