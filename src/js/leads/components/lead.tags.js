@@ -23,36 +23,53 @@ var Tag = React.createClass({
 });
 
 var TagSuggestion = React.createClass({
-  handleClick : function (e) {
-    e.preventDefault();
-
-    this.props.onSelect(this.props.suggestion);
-  },
-
   render : function () {
-    var suggestion = this.props.suggestion;
+    var { suggestion, ...other } = this.props;
 
-    return (<span onClick={this.handleClick} key={suggestion._id}>{suggestion.name}</span>);
+    return (<span {...other}>{suggestion.name}</span>);
   }
 });
 
 var TagSuggestions = React.createClass({
-  mixins: [Reflux.connect(tagStore)],
+  mixins: [Reflux.listenTo(tagStore, 'handleSuggestions')],
 
-  componentWillReceiveProps : function (props) {
-    this.setState({
-      suggestions : props.suggestions
+  getInitialState : function () {
+    return { suggestions : [] };
+  },
+
+  handleSuggestions : function (data) {
+    var tags = this.props.tags, suggestions = data.suggestions;
+
+    suggestions = suggestions.filter(function (suggestion) {
+      var exists = _.find(tags, function (tag) {
+        return tag._id === suggestion._id;
+      });
+
+      return !exists;
     });
+
+    this.setState({
+      suggestions : suggestions
+    })
+  },
+
+  handleClick : function (suggestion, e) {
+    e.preventDefault();
+
+    this.replaceState(this.getInitialState());
+    this.props.onSelect(suggestion);
   },
 
   render : function () {
     var nodes, suggestions = this.state.suggestions;
 
-    if(!suggestions) return null;
+    if(!suggestions.length) return null;
 
     nodes = suggestions.map(function (suggestion) {
-      return <TagSuggestion onSelect={this.props.onSelect} key={suggestion._id} suggestion={suggestion} />
-    }.bind(this));
+      var click = this.handleClick.bind(this, suggestion);
+
+      return <TagSuggestion onClick={click} key={suggestion._id} suggestion={suggestion} />
+    }, this);
 
     return (
       <div className="tag-suggestions">
@@ -66,7 +83,7 @@ var TagEditor = React.createClass({
   getInitialState : function () {
     return {
       tags : [],
-      suggestions : []
+      search : ''
     }
   },
 
@@ -76,10 +93,14 @@ var TagEditor = React.createClass({
     });
   },
 
-  handleKeyPress : function (e) {
+  handleChange : function (e) {
     var el = e.currentTarget, value = el.value.trim();
 
-    if(value.length >= TERM_THRESHOLD) {
+    this.setState(
+      update(this.state, { search : { $set : value } })
+    );
+
+    if(value.length + 1 >= TERM_THRESHOLD) {
       actions.findTags(value);
     }
   },
@@ -90,16 +111,29 @@ var TagEditor = React.createClass({
     });
 
     if(!exists) {
-      this.setState(
-        update(this.state, { tags : { $push : [tag] } })
-      );
+      this.setState(update(this.state, {
+        tags : { $push : [tag] },
+        search : { $set : '' }
+      }), this.commit);
     }
   },
 
   handleRemove : function (index) {
-    this.setState(
-      update(this.state, { tags : { $splice : [[index, 1]] } })
-    );
+    this.setState(update(this.state, {
+      tags : { $splice : [[index, 1]] }
+    }));
+
+    this.commit();
+  },
+
+  handleBlur : function (e) {
+    var el = e.currentTarget;
+
+    el.value = '';
+  },
+
+  commit : function () {
+    this.props.onTagChange(this.state.tags);
   },
 
   render : function () {
@@ -116,8 +150,8 @@ var TagEditor = React.createClass({
         <span>
           {nodes}
         </span>
-        <input id="tag-input" className="tag-input" onKeyPress={this.handleKeyPress} />
-        <TagSuggestions suggestions={this.state.suggestions} onSelect={this.handleSelect} />
+        <input id="tag-input" className="tag-input" value={this.state.search} onBlur={this.handleBlur} onChange={this.handleChange} />
+        <TagSuggestions tags={tags} onSelect={this.handleSelect} />
       </div>
     )
   }
@@ -128,7 +162,7 @@ module.exports = React.createClass({
     return (
       <div className="tags">
         <label htmlFor="tag-input">Tags:</label>
-        <TagEditor tags={this.props.tags} />
+        <TagEditor tags={this.props.tags} onTagChange={this.props.onTagChange} />
       </div>
     );
   }

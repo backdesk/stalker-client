@@ -69,6 +69,12 @@ var LeadForm = React.createClass({
     });
   },
 
+  handleTagChange : function (tags) {
+    this.setState(
+      update(this.state, { lead : { tags : { $set : tags } } })
+    );
+  },
+
   render : function () {
     var lead = this.state.lead;
 
@@ -85,7 +91,7 @@ var LeadForm = React.createClass({
           <label htmlFor="description">Description: </label>
           <textarea id="description" name="description" value={lead.description} onChange={this.handleChange} />
 
-          <TagEditor tags={lead.tags} />
+          <TagEditor tags={lead.tags} onTagChange={this.handleTagChange} />
 
           <label htmlFor="status">Status:</label>
           <select id="status" name="status" className="lead-status" value={lead.status} onChange={this.handleChange}>

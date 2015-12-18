@@ -56,6 +56,7 @@ module.exports = {
     });
   },
 
+  // TODO: Abort multiple requests.
   findTags : function (name) {
     var url = 'http://localhost:3333/tags';
 
