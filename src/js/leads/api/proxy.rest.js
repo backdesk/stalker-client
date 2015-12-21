@@ -81,6 +81,17 @@ module.exports = {
     });
   },
 
+  create : function (body) {
+    return new Promise(function(resolve, reject) {
+      request
+        .post(url)
+        .send(body)
+        .end(function (err, res) {
+          err ? reject(err) : resolve(res.body);
+        });
+    });
+  },
+
   update : function (body) {
     return new Promise(function(resolve, reject) {
       request

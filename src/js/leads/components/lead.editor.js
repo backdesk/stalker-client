@@ -21,11 +21,13 @@ var LeadForm = React.createClass({
         status : '',
         source : {
           name : '',
-          channel : '',
           company : '',
           _id : null
         },
-        tags : []
+        status : 'junk',
+        channel : 'web',
+        tags : [],
+
       },
       result : null
     }
@@ -124,7 +126,7 @@ module.exports = React.createClass({
   mixins: [Reflux.connect(leadStore)],
 
   handleSubmit : function (data) {
-    this.setState(update(this.state, { pending : { $set : true } }));
+    // this.setState(update(this.state, { pending : { $set : true } }));
 
     if(this.props.routeParams.id) {
       actions.update(data);
