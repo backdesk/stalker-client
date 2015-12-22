@@ -1,26 +1,26 @@
 var React = require('react');
-var classNames = require('classnames');
 
 var FormResult = React.createClass({
   render : function () {
-    if(!this.props.result) return null;
+    var msgClass;
+
+    if(this.props.result) {
+      msgClass = (this.props.result === 'success') ? 'msg-success' : 'msg-failure';
+    } else {
+      return null;
+    }
 
     return (
-      <div>{this.props.result}</div>
+      <div className={msgClass}>{this.props.messages[this.props.result]}</div>
     );
   }
 });
 
 module.exports = React.createClass({
   render : function () {
-    var classes = classNames({
-      'form-container' : true,
-      'pending': this.props.pending
-    });
-
     return (
-      <div className={classes}>
-        <FormResult result={this.props.result} />
+      <div className="form-container">
+        <FormResult result={this.props.result} messages={this.props.messages} />
         {this.props.children}
       </div>
     )

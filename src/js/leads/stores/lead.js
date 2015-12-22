@@ -29,10 +29,10 @@ module.exports = Reflux.createStore({
   },
 
   onCreateSuccess : function (lead) {
-    this.trigger({ lead : lead, errors : null });
+    this.trigger({ lead : lead, errors : null, result: 'success' });
   },
 
   onCreateFailed : function (lead, errors) {
-    this.trigger({ lead : lead, errors : errors });
+    this.trigger({ lead : lead, errors : errors, result: 'failed' });
   }
 });

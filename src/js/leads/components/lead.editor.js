@@ -1,7 +1,7 @@
 var React = require('react'),
     Reflux = require('reflux'),
+    Router = require('react-router'),
     update = require('react-addons-update'),
-    classNames = require('classnames'),
     Layout = require('../../shared/components/layout'),
     SourceFinder = require('../../sources/components/source.finder'),
     TagEditor = require('./lead.tags'),
@@ -11,6 +11,11 @@ var React = require('react'),
 var leadStore = require('../stores/lead'),
     utils = require('../../shared/utils'),
     actions = require('../actions');
+
+var MESSAGES = {
+  success : 'Yep. The lead was successfully saved.',
+  failure : 'The lead was not saved. Fail.'
+};
 
 var LeadForm = React.createClass({
   getInitialState : function () {
@@ -60,6 +65,7 @@ var LeadForm = React.createClass({
   },
 
   handleSourceChange : function (agent) {
+
     this.setState({
       lead : update(this.state.lead, {
         source : {
@@ -83,8 +89,6 @@ var LeadForm = React.createClass({
     return (
       <form className="pure-form pure-form-stacked lead-editor" onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend>Create/Edit Lead</legend>
-
           <FormError errors={this.props.errors} />
 
           <label htmlFor="details">Details: </label>
@@ -123,11 +127,15 @@ var LeadForm = React.createClass({
 });
 
 module.exports = React.createClass({
-  mixins: [Reflux.connect(leadStore)],
+  mixins: [Reflux.connect(leadStore), Router.History],
+
+  handleClick : function (e) {
+    e.preventDefault();
+
+    this.history.goBack();
+  },
 
   handleSubmit : function (data) {
-    // this.setState(update(this.state, { pending : { $set : true } }));
-
     if(this.props.routeParams.id) {
       actions.update(data);
     } else {
@@ -142,10 +150,18 @@ module.exports = React.createClass({
   },
 
   render : function () {
+    var lead = this.state.lead;
+
     return (
       <Layout>
-        <FormContainer result={this.state.result} pending={this.state.pending}>
-          <LeadForm lead={this.state.lead} errors={this.state.errors} onSubmit={this.handleSubmit} />
+        <div>
+          <h3>{lead.details}</h3>
+          <div className="mini-nav right">
+            <a href="#" className="edit-link" onClick={this.handleClick}>Go Back</a>
+          </div>
+        </div>
+        <FormContainer result={this.state.result} messages={MESSAGES}>
+          <LeadForm lead={lead} errors={this.state.errors} onSubmit={this.handleSubmit} />
         </FormContainer>
       </Layout>
     );
